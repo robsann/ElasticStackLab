@@ -1,1 +1,11 @@
-# ElasticStackLab
+# Threat Hunting with Elastic Stack 8
+- Configured in VirtualBox:
+  - DHCP Server:
+    - Ubuntu VM (Elastic Host)
+    - Windows 10 VM (Victim)
+- Configured Elastic 8.8:
+  - Elastic Stack: Elasticsearch and Kibana (Web UI).
+  - Integrations: Fleet Server, Elastic Agent, Elastic Defend, System, and Windows.
+- Simulated two scenarios:
+  - First Scenario: EICAR Malware Test.
+  - Second Scenario: MITRE ATT&CK Test.
