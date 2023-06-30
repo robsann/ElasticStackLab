@@ -40,7 +40,7 @@
 
 ### 3 - Windows Security
 
-#### 2.1 - Elastic Security Antivirus
+#### 3.1 - Elastic Security Antivirus
 Use Elastic Security Antivirus from the Elastic Defender Integration instead of Microsoft Defender Antivirus or disable Real-time protection from Microsoft Defender Antivirus.
 <img src="images/3.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
 
