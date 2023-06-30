@@ -12,32 +12,60 @@
 
 # Highlights
 
+## Elastic Host and Victim Setup
+
+### 1 - Fleet Agents
+<img src="images/1-fleet_agents.png" title="Fleet Agents"/>
+
+#### 1.1 - Fleet Server Policy
+<img src="images/1.1-fleet_server_policy.png" title="Fleet Server Policy"/>
+
+##### 1.1.1 - Fleet Server Integration
+<img src="images/1.1.1-fleet_server_integration.png" title="Fleet Server Integration"/>
+
+#### 1.2 - Windows Endpoint Policy
+<img src="images/1.2-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
+
+##### 1.2.1 - Elastic Defend Integration
+<img src="images/1.2.1-elastic_defend_integration.png" title="Elastic Defend Integration"/>
+
+##### 1.2.2 - System Integration
+<img src="images/1.2.2-system_integration.png" title="System Integration"/>
+
+##### 1.2.3 - Winows Integration
+<img src="images/1.2.3-windows_integration.png" title="Windows Integration"/>
+
+### 2 - Endpoint Security Rule
+<img src="images/2-endpoint_security_rule.png" title="Endpoint Security Rule"/>
+
+### 3 - Windows Security
+
+#### 2.1 - Elastic Security Antivirus
+Use Elastic Security Antivirus from the Elastic Defender Integration instead of Microsoft Defender Antivirus or disable Real-time protection from Microsoft Defender Antivirus.
+<img src="images/3.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
+
+#### 3.2 - Microsoft Defender SmartScreen
+<img src="images/3.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
+
 ## First Scenario: EICAR Malware Test.
 
-### 1. Use Elastic Security Antivirus
-Use Elastic Security Antivirus from the Elastic Defender Integration instead of Microsoft Defender Antivirus or disable Real-time protection from Microsoft Defender Antivirus.
-<img src="images/1-elastic_security.png" title="EICAR Description-vm"/>
+### 4.1 - EICAR Malware Description
+<img src="images/4.1-eicar_description.png" title="EICAR Description"/>
 
-### 2. Disable SmartScreen for Microsof Edge
-<img src="images/2-msdefender_smartscreen.png" title="EICAR Description-vm"/>
+### 4.2 - EIRCAR Website
+<img src="images/4.2-eicar_website.png" title="EICAR Website"/>
 
-### 3. EICAR Malware Description
-<img src="images/3-eicar_description.png" title="EICAR Description-vm"/>
-
-### 4. EIRCAR Website
-<img src="images/4-eicar_website.png" title="EICAR Description-vm"/>
-
-### 5. EICAR Files
+### 4.3 - EICAR Files
 EICAR downloaded and extracted files.
-<img src="images/5-eicar_files.png" title="EICAR Description-vm"/>
+<img src="images/4.3-eicar_files.png" title="EICAR Downloaded Files"/>
 
-### 6. Elastiv Kibana Discover
-<img src="images/6-elastic_analytics_discover.png" title="EICAR Description-vm"/>
+### 5.1 - Elastiv Analytics Discover
+<img src="images/5.1-elastic_analytics_discover.png" title="Analytics Discover"/>
 
-### 7. Elastic Scuity Dashboard Overview
-<img src="images/7-elastic_security_dashboard.png" title="EICAR Description-vm"/>
+### 5.2 - Elastic Scuity Dashboard Overview
+<img src="images/5.2-elastic_security_dashboard.png" title="Security Dashboard Overview"/>
 
-### 8. Elastic Security Alerts
-<img src="images/8-elastic_security_alerts.png" title="EICAR Description-vm"/>
+### 5.3 - Elastic Security Alerts
+<img src="images/5.3-elastic_security_alerts.png" title="Security Alerts"/>
 
 ## Second Scenario: MITRE ATT&CK Test.
