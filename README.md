@@ -20,19 +20,19 @@
 #### 1.1 - Fleet Server Policy
 <img src="images/1.1-fleet_server_policy.png" title="Fleet Server Policy"/>
 
-##### 1.1.1 - Fleet Server Integration
+#### 1.1.1 - Fleet Server Integration
 <img src="images/1.1.1-fleet_server_integration.png" title="Fleet Server Integration"/>
 
 #### 1.2 - Windows Endpoint Policy
 <img src="images/1.2-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
 
-##### 1.2.1 - Elastic Defend Integration
+#### 1.2.1 - Elastic Defend Integration
 <img src="images/1.2.1-elastic_defend_integration.png" title="Elastic Defend Integration"/>
 
-##### 1.2.2 - System Integration
+#### 1.2.2 - System Integration
 <img src="images/1.2.2-system_integration.png" title="System Integration"/>
 
-##### 1.2.3 - Winows Integration
+#### 1.2.3 - Winows Integration
 <img src="images/1.2.3-windows_integration.png" title="Windows Integration"/>
 
 ### 2 - Endpoint Security Rule
