@@ -36,6 +36,7 @@
 <img src="images/1.2.3-windows_integration.png" title="Windows Integration"/>
 
 ### 2 - Endpoint Security Rule
+The Endpoint Security Rule generates a detection alert (signal) each time an Elastic Endpoint Security alert is received. Enabling this rule allows you to investigate your Endpoint alerts on Elastic Security.
 <img src="images/2-endpoint_security_rule.png" title="Endpoint Security Rule"/>
 
 ### 3 - Windows Security
