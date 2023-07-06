@@ -70,3 +70,19 @@ EICAR downloaded and extracted files.
 <img src="images/5.3-elastic_security_alerts.png" title="Security Alerts"/>
 
 ## Second Scenario: MITRE ATT&CK Test.
+
+### Alerts Over Time
+All the 249 alerts detected by 47 distinct rules.
+<img src="images/3/1-alerts_over_time.png" title="Alerts Over Time"/>
+
+### Detection Rules and Executables
+Count of all the Security SIEM detection rules used to create the alerts.
+<img src="images/3/2-rules_and_executables.png" title="Rules and Executables"/>
+
+### Detection Rules Techniques and Tactics
+<img src="images/3/3-rules_tech_tact.png" title="Rules Techiniques Tactics"/>
+
+### Command Line of Process and Parent Process per Rule
+<img src="images/3/4-processes_per_rule.png" title="Processes per Rule"/>
+
+
