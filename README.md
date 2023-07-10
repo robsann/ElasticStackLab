@@ -75,9 +75,12 @@ EICAR downloaded and extracted files.
 All the 249 alerts detected by 47 distinct rules.
 <img src="images/3/1-alerts_over_time.png" title="Alerts Over Time"/>
 
-### 3.2 - Detection Rules and Executables
+### 3.2.1 - Detection Rules and Executables
 Count of all the Security SIEM detection rules used to create the alerts.
-<img src="images/3/2-rules_and_executables.png" title="Rules and Executables"/>
+<img src="images/3/2.1-rules_and_executables.png" title="Rules and Executables"/>
+
+### 3.2.2 - Processes per Rule for the Top 10 Rules by Count of Records
+<img src="images/3/2.2-processes_per_rule_top10.png" title="Processes per Rule (Top 10)"/>
 
 ### 3.3.1 - Detection Rules Techniques and Tactics
 <img src="images/3/3.1-rules_tech_tact.png" title="Rules Techiniques Tactics"/>
