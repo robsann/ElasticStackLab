@@ -110,7 +110,7 @@ RTA is composed of python scripts that generate evidence of over 50 different AT
 Where possible, RTA attempts to perform the actual malicious activity described. In other cases, the RTAs will emulate all or parts of the activity. For example, some lateral movement will by default target local host (though with parameters typically allow for multi-host testing). In other cases, executables such as cmd.exe or python.exe will be renamed to make it appeas as if a Windows binary is doing non-standard activities..
 
 ### 3.1 - Alerts Over Time
-All the 277 signals detected by 45 distinct rules.
+All the 247 signals detected by 45 distinct rules.
 <img src="images/3/1-alerts_over_time.png" title="Alerts Over Time"/>
 
 ### 3.2.1 - Detection Rules and Executables
