@@ -6,9 +6,9 @@
 - Configured Elastic 8.8:
   - Elastic Stack: Elasticsearch and Kibana (Web UI).
   - Integrations: Fleet Server, Elastic Agent, Elastic Defend, System, and Windows.
-- Simulated two scenarios:
-  - First Scenario: EICAR Malware Test.
-  - Second Scenario: MITRE ATT&CK Test.
+- Simulated two tests:
+  - EICAR Malware Test.
+  - MITRE ATT&CK Test with Red Team Automation (RTA).
 
 # Highlights
 
@@ -102,7 +102,12 @@ EICAR downloaded and extracted files.
 ### 2.2.3 - Elastic Security Alerts
 <img src="images/2/2.3-elastic_security_alerts.png" title="Security Alerts"/>
 
-## 3 - Second Scenario: MITRE ATT&CK Test.
+## 3 - MITRE ATT&CK Test with Red Team Automation (RTA)
+[RTA](https://github.com/endgameinc/RTA) provides a framework of scripts designed to allow blue teams to test their detection capabilities against malicious tradecraft, modeled after [MITRE ATT&CK](https://attack.mitre.org/wiki/ATT&CK_Matrix).
+
+RTA is composed of python scripts that generate evidence of over 50 different ATT&CK tactics, as well as a compiled binary application that performs activities such as file timestopping, process injections, and beacon simulation as needed.
+
+Where possible, RTA attempts to perform the actual malicious activity described. In other cases, the RTAs will emulate all or parts of the activity. For example, some lateral movement will by default target local host (though with parameters typically allow for multi-host testing). In other cases, executables such as cmd.exe or python.exe will be renamed to make it appeas as if a Windows binary is doing non-standard activities..
 
 ### 3.1 - Alerts Over Time
 All the 277 signals detected by 45 distinct rules.
@@ -121,7 +126,7 @@ Count of all the Security SIEM detection rules used to create the alerts.
 ### 3.3.1 - Detection Rules Techniques and Tactics
 <img src="images/3/3.1-rules_tech_tact.png" title="Rules Techiniques Tactics"/>
 
-### 3.3.2 - Command Line of Process and Parent Process per Rule
+### 3.3.2 - Detection Signals in Time Order
 <img src="images/3/3.2-processes_per_rule.png" title="Processes per Rule"/>
 
 
