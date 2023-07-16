@@ -10,6 +10,10 @@
   - EICAR Malware Test.
   - MITRE ATT&CK Test with Red Team Automation (RTA).
 
+## Diagram
+<img src="images/elastic_diagram.png" title="Diagram"/>
+
+
 # Highlights
 
 ## 1 - Fleet Server and Victim Setup
