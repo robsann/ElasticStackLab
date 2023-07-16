@@ -71,10 +71,6 @@ The Windows integration collects two types of data: logs and metrics.
 - **Metrics** give you insight into the state of the machine. Metric data streams collected by the Windows integration include **service details** and **performance counter** values.
 <img src="images/1/3.3-windows_integration.png" title="Windows Integration"/>
 
-### 1.4 - Endpoint Security Rule
-The Endpoint Security Rule generates a detection alert (signal) each time an Elastic Endpoint Security alert is received. Enabling this rule allows you to investigate your Endpoint alerts on Elastic Security.
-<img src="images/1/4-endpoint_security_rule.png" title="Endpoint Security Rule"/>
-
 ### 1.5 - Windows Security
 
 #### 1.5.1 - Elastic Security Antivirus
@@ -84,6 +80,7 @@ Use Elastic Security Antivirus from the Elastic Defender Integration instead of 
 #### 1.5.2 - Microsoft Defender SmartScreen
 Disable the SmartScreen for Microsoft Edge to be able to download the files in the EICAR Malware Test.
 <img src="images/1/5.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
+
 
 ## 2 - First Scenario: EICAR Malware Test.
 
@@ -97,14 +94,19 @@ Disable the SmartScreen for Microsoft Edge to be able to download the files in t
 EICAR downloaded and extracted files.
 <img src="images/2/1.3-eicar_files.png" title="EICAR Downloaded Files"/>
 
+### 2.2.1 - Endpoint Security Rule
+The Endpoint Security Rule generates a detection alert (signal) each time an Elastic Endpoint Security alert is received. Enabling this rule allows you to investigate your Endpoint alerts on Elastic Security.
+<img src="images/2/2.1-endpoint_security_rule.png" title="Endpoint Security Rule"/>
+
+
 ### 2.2.1 - Elastiv Analytics Discover
-<img src="images/2/2.1-elastic_analytics_discover.png" title="Analytics Discover"/>
+<img src="images/2/2.2-elastic_analytics_discover.png" title="Analytics Discover"/>
 
 ### 2.2.2 - Elastic Scuity Dashboard Overview
-<img src="images/2/2.2-elastic_security_dashboard.png" title="Security Dashboard Overview"/>
+<img src="images/2/2.3-elastic_security_dashboard.png" title="Security Dashboard Overview"/>
 
 ### 2.2.3 - Elastic Security Alerts
-<img src="images/2/2.3-elastic_security_alerts.png" title="Security Alerts"/>
+<img src="images/2/2.4-elastic_security_alerts.png" title="Security Alerts"/>
 
 ## 3 - MITRE ATT&CK Test with Red Team Automation (RTA)
 [RTA](https://github.com/endgameinc/RTA) provides a framework of scripts designed to allow blue teams to test their detection capabilities against malicious tradecraft, modeled after [MITRE ATT&CK](https://attack.mitre.org/wiki/ATT&CK_Matrix).
