@@ -124,7 +124,7 @@ Ref: https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack
 ## Windows 10 Installation
 1. Download the [Windows 10 ISO File](https://www.microsoft.com/en-gb/software-download/windows10ISO).
 2. On the **VirtualBox Manager** click on **New** to create a new Virtual Machine:
-    1. Chose **Name**, **Machine Folder**, **Type**, and **Version**.
+    1. Choose **Name**, **Machine Folder**, **Type**, and **Version**.
     2. **Memory size**: 4 GB
     3. **Hard disk**:
         1. (check) **Create a virtual hard disk now** and click **Create**.
