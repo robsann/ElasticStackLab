@@ -10,8 +10,14 @@
   - EICAR Malware Test.
   - MITRE ATT&CK Test with Red Team Automation (RTA).
 
+The procedures to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md).
+
 ## Diagram
 <img src="images/elastic_diagram.png" title="Diagram"/>
+
+## IP Addresses
+IP addresses configuration on Ubuntu Server and Windows 10 virtual machines.
+<img src="images/ip_addresses.png" title="IP Addresses"/>
 
 
 # Highlights
@@ -71,15 +77,15 @@ The Windows integration collects two types of data: logs and metrics.
 - **Metrics** give you insight into the state of the machine. Metric data streams collected by the Windows integration include **service details** and **performance counter** values.
 <img src="images/1/3.3-windows_integration.png" title="Windows Integration"/>
 
-### 1.5 - Windows Security
+### 1.4 - Windows Security
 
-#### 1.5.1 - Elastic Security Antivirus
+#### 1.4.1 - Elastic Security Antivirus
 Use Elastic Security Antivirus from the Elastic Defender Integration instead of Microsoft Defender Antivirus or disable Real-time protection from Microsoft Defender Antivirus.
-<img src="images/1/5.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
+<img src="images/1/4.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
 
-#### 1.5.2 - Microsoft Defender SmartScreen
+#### 1.4.2 - Microsoft Defender SmartScreen
 Disable the SmartScreen for Microsoft Edge to be able to download the files in the EICAR Malware Test.
-<img src="images/1/5.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
+<img src="images/1/4.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
 
 
 ## 2 - First Scenario: EICAR Malware Test.
