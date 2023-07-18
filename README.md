@@ -1,6 +1,7 @@
 # Threat Hunting with Elastic Stack 8
 In this lab we use VirtualBox to create a DHCP Server for an internal network with two virtual machines, one Ubuntu Server that will be the Elastic Host and one Windows 10 that will be the victim. Both virtual machines has access to the internet through the adapter attached to NAT. Malicious test will be conducted on the victim machine to test the detection and visualisation capabilities of the Elastic Stack.
 
+## Summary
 - Configured in VirtualBox:
   - DHCP Server:
     - Ubuntu VM (Elastic Host)
@@ -12,7 +13,8 @@ In this lab we use VirtualBox to create a DHCP Server for an internal network wi
   - EICAR Malware Test.
   - MITRE ATT&CK Test with Red Team Automation (RTA).
 
-The procedures to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md).
+## Procedure
+The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md).
 
 ## Diagram
 <img src="images/elastic_diagram.png" title="Diagram"/>
