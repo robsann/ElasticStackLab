@@ -1,4 +1,5 @@
-# Threat Hunting with ElasticStack
+# Threat Hunting with Elastic Stack
+
 Ref: https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack
 
 
