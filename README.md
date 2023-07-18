@@ -4,12 +4,13 @@ In this lab we use VirtualBox to create a DHCP Server for an internal network wi
 ## Summary
 - Configured in VirtualBox:
   - DHCP Server:
-    - Ubuntu VM (Elastic Host)
-    - Windows 10 VM (Victim)
-- Configured Elastic 8.8:
+    - Ubuntu Server (Elastic Host)
+    - Windows 10 (Victim)
+- Configured Elastic 8 on Ubuntu Server:
   - Elastic Stack: Elasticsearch and Kibana (Web UI).
   - Integrations: Fleet Server, Elastic Agent, Elastic Defend, System, and Windows.
-- Simulated two tests:
+  - Use Elastic Agent to add Fleet Server (Ubuntu Server) and add agent (Windows 10).
+- Simulated tests:
   - EICAR Malware Test.
   - MITRE ATT&CK Test with Red Team Automation (RTA).
 
