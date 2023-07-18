@@ -45,14 +45,14 @@ Ref: https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack
         1. **Adaptor 1**:
             1. **Attached to**: NAT
             2. On **Advanced** click on **Port Forwarding**.
-                1. On **Port Forwarding Rules** set the following rules to access **Kibana** and **Elasticsearch** from the host using **SSH**.
+                1. On **Port Forwarding Rules** set the following rules to access **Kibana** and **SSH**.
                     ```
                     Name            Protocol  Host IP     Host Port   Guest IP    Guest Port
                     Kibana          TCP       127.0.0.1   15601       10.0.2.15   5601
                     SSH             TCP       127.0.0.1   10022       10.0.2.15   22
                     ```
                 2. Click **Ok**.
-                - Using **Port Forwarding** the connection to **HostIP:HostPort** are redirected to **GuestIP:GuestPort**.
+                - Using **Port Forwarding** the connections to **HostIP:HostPort** are redirected to **GuestIP:GuestPort**.
     4. On **Network > Adapter 2**:
         1. **Attached to**: Internal Network
         2. **Name**: intnet1
@@ -66,7 +66,10 @@ Ref: https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack
         1. Select **Layout** and **Variant** and hit enter on **Done**.
     5. On **Choose type of install**:
         1. Choose **Ubuntu Server** and hit enter on **Done**.
-    6. On **Network connections** leave as it is and jit enter on **Done**.
+    6. On **Network connections**:
+        1. `enp0s3 DHCPv4` should be `eth 10.0.2.15/24`.
+        2. `enp0s8 DHCPv4` should be `eth 172.16.1.101/24`.
+        3. Hit enter on **Done**.
     7. On **Configure proxy** just hit enter on **Done**.
     8. On **Configure Ubuntu archive mirror** just hit enter on **Done**.
     9. On **Guided storage configuration** just leave default and hit enter on **Done**.
@@ -76,8 +79,8 @@ Ref: https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack
     12. On **Upgrade to Ubuntu Pro** select **Skip for now** and hit enter on **Continue**.
     13. On **SSH Setup** select **Install OpenSSH server** and hit enter on **Done**.
     14. On **Featured Server Snaps** just press enter on **Done** and the installation will     .
-    15. On **Install complete!** hit enter on **Cancel update and reboot**.
-    16. On **Please remove the installation medium** just hit press **ENTER** and it will reboot.
+    15. On **Install complete!** hit enter on **Cancel update and reboot**, it will take a while to reboot.
+    16. On **Please remove the installation medium** just hit **ENTER** and it will reboot.
 6. After reboot **log in** with your credentials.
     1. Update the system:
         ```
@@ -331,7 +334,7 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
             ```
             $ sudo openssl x509 -noout -fingerprint -sha256 -inform pem -in /etc/elasticsearch/certs/http_ca.crt
             ```
-    6. Click on **Close**.
+    6. If **Missing URL for Fleet Server host** appears click on **Fleet Settings** or click on **Close**.
 5. Go to **Fleet > Agents** and click on **Add agent**.
 6. **Add agent**
     1. **What type of host are you adding?**
@@ -403,15 +406,24 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
         4. Click on **Save integration**.
         5. Click on **Save and deploy changes**.
 
+#### Rules
+1. Go to **Security > Manage** and click on **Rules**.
+2. For the **EICAR Malware Test** enable only the **Endpoint Security** rule. If it's **last response** is showing **Warning** it's because no data in the `logs-endpoint.alerts-*` index was generated yet.
+3. For the **MITRE ATT&CK Test with RTA** enable all the rules and after disable the following rules:
+    1. **My First Rule** rule.
+    2. **Multiple Alerts Involving a User** rule.
+    3. **Multiple Alerts in Different ATT&CK Tactics on a Single Host** rule.
+    4. You can also disable all the rules with **Failed** and **Warning** in the **Last response** field.
+
 ## EICAR Malware Test
-1. If not using **Elastic Security antivirus**, disable **Windows Security > Virus & threat protection > real time protection**.
+1. If not using **Elastic Security antivirus**, disable **Windows Security > Virus & threat protection settings > Real-time protection**.
 2. Go to **EICAR Anti Malware Testfile website** to download the test files:
   1. Go to https://www.eicar.org/download-anti-malware-testfile/
   2. Click on **More information** then **Continue to the unsafe site (not recommended**.
   3. Download the `eicar.com`, `eicar.com.txt`, `eicar_com.zip`, and `eicarcom2.zip` test files.
 3. Extract the files `eicar_com.zip` and `eicarcom2.zip`.
 4. In Kibana **Security > Alerts** the actions performed will be detected as Malware.
-    - During the downloading of the `eicar.com` and `eicar.com.txt` files it should generate three signals for each file: for the `.tmp`, `.crdownload`, and `eicar.com` or `eicar.com.txt` files.
+    - During the downloading of the `eicar.com` and `eicar.com.txt` files it should generate three signals for each file: for the `.tmp`, `.crdownload`, and `eicar.com`/`eicar.com.txt` files.
     - The `eicar_com.zip` and `eicarcom2.zip` files will generate a signal only during the extraction of the `eicar.com` file.
     - Not always all the signals are captured by Elastic Defend.
 
