@@ -1,4 +1,4 @@
-# Threat Hunting with Elastic Stack 8
+# Threat Hunting with Elastic Stack 8 (XDR)
 In this lab we use VirtualBox to create a DHCP Server for an internal network with two virtual machines, one is an Ubuntu Server that will be the Elastic Host and the other is a Windows 10 that will be the victim and will have its data collected by Elastic Agent. Both virtual machines has access to the internet through the adapter attached to NAT. Malicious test will be conducted on the victim machine to check the detection and visualisation capabilities of the Elastic Stack.
 
 ## Summary
