@@ -1,8 +1,5 @@
 # Threat Hunting with Elastic Stack
 
-Ref: https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack
-
-
 ## Virtual Network:
 - **Virtual Switch** (intnet1) - 172.16.1.0/24
     - **Virtual DHCP Server** - 172.16.1.100

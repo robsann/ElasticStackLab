@@ -1,55 +1,55 @@
 # Threat Hunting with Elastic Stack 8 (XDR)
-In this lab we use VirtualBox to create a DHCP Server for an internal network with two virtual machines, one is an Ubuntu Server that will be the Elastic Host and the other is a Windows 10 that will be the victim and will have its data collected by Elastic Agent. Both virtual machines has access to the internet through the adapter attached to NAT. Malicious test will be conducted on the victim machine to check the detection and visualisation capabilities of the Elastic Stack.
+This lab uses Elastic Stack 8 (XDR) on an Ubuntu Server virtual machine to detect malicious activity in a Windows 10 virtual machine. Using VirtualBox, a DHCP Server was created for an internal network with two virtual machines: Ubuntu Server (Elastic Host) and Windows 10 (Victim). Elastic Agent is used to collect data on the victim's machine. Both virtual machines have two network adapters, one connected to the NAT with internet access and the other to the internal network. Malicious tests performed on the victim's machine allowed verify the detection and visualization capabilities of the Elastic Stack.
 
 ## Summary
 - Configured in VirtualBox:
   - DHCP Server:
     - Ubuntu Server (Elastic Host)
     - Windows 10 (Victim)
-- Configured Elastic 8 on Ubuntu Server:
+- Configured Elastic Stack 8 on Ubuntu Server:
   - Elastic Stack: Elasticsearch and Kibana (Web UI).
   - Integrations: Fleet Server, Elastic Agent, Elastic Defend, System, and Windows.
-  - Use Elastic Agent to add Fleet Server (Ubuntu Server) and add agent (Windows 10).
-- Simulated tests:
+  - Used Elastic Agent to add Fleet Server (Ubuntu Server) and Agent (Windows 10).
+- Simulated malicious tests:
   - EICAR Malware Test.
   - MITRE ATT&CK Test with Red Team Automation (RTA).
 
 ## Procedure
-The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md).
+The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md) and it was adapted from [here](https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack).
 
 ## Diagram
 <img src="images/elastic_diagram.png" title="Diagram"/>
-
-## IP Addresses
-IP addresses configuration on Ubuntu Server and Windows 10 virtual machines.
-<img src="images/ip_addresses.png" title="IP Addresses"/>
 
 
 # Highlights
 
 ## 1 - Fleet Server and Victim Setup
 
-### 1.1 - Fleet and Elastic Agents
+### 1.1 IP Addresses of the Virtual Machines
+IP addresses configuration on Ubuntu Server and Windows 10 virtual machines.
+<img src="images/1/1-ip_addresses.png" title="IP Addresses"/>
+
+### 1.2 - Fleet and Elastic Agents
 Fleet provides a web-based UI in Kibana for centrally managing Elastic Agents and their policies. Fleet serves as the communication channel back to the Elastic Agents. Agents check in for the latest updates on a regular basis. When you make a change to an agent policy, all the agents receive the update during their next check-in. To upgrade your Elastic Agent binaries or integrations, you can initiate upgrades in Fleet, and the Elastic Agents running on your hosts will upgrade automatically.
 
 Elastic Agent is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. A single agent makes it easier and faster to deploy monitoring across your infrastructure. Each agent has a single policy you can update to add integrations for new data sources, security protections, and more. Elastic integrations are powered by Elastic Agent.
 
 All communication between the Fleet UI and Fleet Server happens through Elasticsearch. Fleet writes policies, actions, and any changes to the fleet-* indices in Elasticsearch. Each Fleet Server monitors the indices, picks up changes, and ships them to the Elastic Agents. To communicate to Fleet about the status of the Elastic Agents and the policy rollout, the Fleet Servers write updates to the fleet-* indices.
-<img src="images/1/1-fleet_agents.png" title="Fleet Agents"/>
+<img src="images/1/2-fleet_agents.png" title="Fleet Agents"/>
 
-### 1.2 - Fleet Server Policy
+### 1.3 - Fleet Server Policy
 In the Flee Server Policy we are using only the Fleet Server integration. The System integration can be added to monitor the host acting as a server.
-<img src="images/1/2-fleet_server_policy.png" title="Fleet Server Policy"/>
+<img src="images/1/3-fleet_server_policy.png" title="Fleet Server Policy"/>
 
-#### 1.2.1 - Fleet Server Integration
+#### 1.3.1 - Fleet Server Integration
 Fleet Server is the mechanism to connect Elastic Agents to Fleet. It allows for a scalable infrastructure, can support many Elastic Agent connections, and is supported in Elastic Cloud and self-managed clusters. Fleet Server is a separate process that communicates with the deployed Elastic Agents. It’s launched as part of an Elastic Agent on a host intended to act as a server. It is responsible for updating agent policies, collecting status information, and coordinating actions across Elastic Agents.
-<img src="images/1/2.1-fleet_server_integration.png" title="Fleet Server Integration"/>
+<img src="images/1/3.1-fleet_server_integration.png" title="Fleet Server Integration"/>
 
-### 1.3 - Windows Endpoint Policy
+### 1.4 - Windows Endpoint Policy
 In the Windows Endpoint Policy we are using the Elastic Defend, System, and Windows integrations.
-<img src="images/1/3-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
+<img src="images/1/4-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
 
-#### 1.3.1 - Elastic Defend Integration
+#### 1.4.1 - Elastic Defend Integration
 Elastic Defend provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on both traditional endpoints and public cloud environments. ​​Use Elastic Defend to:
 - Prevent complex attacks (Malware, Ransomware, Advanced Threats,...)
 - Alert in high fidelity
@@ -64,33 +64,33 @@ Generated indices:
 - Metrics - The metrics type of documents are stored in metrics-endpoint.* indices. Metrics documents contain performance information about the endpoind executable and the host it is running on. The following section define the mapped fields sent by the endpoint.
     - metadata, metrics, policy response.
 
-<img src="images/1/3.1-elastic_defend_integration.png" title="Elastic Defend Integration"/>
+<img src="images/1/4.1-elastic_defend_integration.png" title="Elastic Defend Integration"/>
 
-#### 1.3.2 - System Integration
+#### 1.4.2 - System Integration
 The System integration allows you to monitor servers, personal computers, and more. Use the System integration to collect metrics and logs from your machines. Then visualize that data in Kibana, create alerts to notify you if something goes wrong, and reference data when troubleshooting an issue.
 
 The System integration collects two types of data: logs and metrics.
 - **Logs** help you keep a record of events that happen on your machine. Log data streams collected by the System integration include **application**, **system**, and **security** events on machines running Windows and **auth** and **syslog** events on machines running macOS or Linux.
 - Metrics give you insight into the state of the machine. Metric data streams collected by the System integration include **CPU usage**, **load statistics**, **memory usage**, **information on network behavior**, and more.
-<img src="images/1/3.2-system_integration.png" title="System Integration"/>
+<img src="images/1/4.2-system_integration.png" title="System Integration"/>
 
-#### 1.3.3 - Winows Integration
+#### 1.4.3 - Winows Integration
 The Windows integration allows you to monitor the Windows OS, services, applications, and more. Use the Windows integration to collect metrics and logs from your machine. Then visualize that data in Kibana, create alerts to notify you if something goes wrong, and reference data when troubleshooting an issue.
 
 The Windows integration collects two types of data: logs and metrics.
 - **Logs** help you keep a record of events that happen on your machine. Log data streams collected by the Windows integration include **forwarded events**, **PowerShell events**, and **Sysmon events**. Log collection for the Security, Application, and System event logs is handled by the System integration.
 - **Metrics** give you insight into the state of the machine. Metric data streams collected by the Windows integration include **service details** and **performance counter** values.
-<img src="images/1/3.3-windows_integration.png" title="Windows Integration"/>
+<img src="images/1/4.3-windows_integration.png" title="Windows Integration"/>
 
-### 1.4 - Windows Security
+### 1.5 - Windows Security
 
-#### 1.4.1 - Elastic Security Antivirus
+#### 1.5.1 - Elastic Security Antivirus
 Use Elastic Security Antivirus from the Elastic Defender Integration instead of Microsoft Defender Antivirus or disable Real-time protection from Microsoft Defender Antivirus.
-<img src="images/1/4.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
+<img src="images/1/5.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
 
-#### 1.4.2 - Microsoft Defender SmartScreen
+#### 1.5.2 - Microsoft Defender SmartScreen
 Disable the SmartScreen for Microsoft Edge to be able to download the files in the EICAR Malware Test.
-<img src="images/1/4.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
+<img src="images/1/5.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
 
 
 ## 2 - First Scenario: EICAR Malware Test.
