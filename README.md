@@ -7,9 +7,8 @@ This lab aims to explore Elastic Stack's detection and visualization capabilitie
   - Ubuntu Server (Elastic Host)
   - Windows 10 (Victim)
 - Configured Elastic Stack 8 on Ubuntu Server:
-  - Elastic Stack: Elasticsearch, Kibana (UI), and Integrations.
-  - Integrations: Fleet Server, Elastic Agent, System, Windows, and Elastic Defend.
-  - Added Fleet Server (Ubuntu Server) and Agent (Windows 10) using Elastic Agent.
+  - Elastic Stack: Elasticsearch, Kibana (UI), and Elastic Agent + Integrations.
+  - Integrations: Fleet Server, System, Windows, and Elastic Defend.
 - Simulated two malicious tests:
   - EICAR Malware Test.
   - MITRE ATT&CK Test with Red Team Automation (RTA).

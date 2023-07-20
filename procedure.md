@@ -411,7 +411,7 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
     1. **My First Rule** rule.
     2. **Multiple Alerts Involving a User** rule.
     3. **Multiple Alerts in Different ATT&CK Tactics on a Single Host** rule.
-    4. You can also disable all the rules with **Failed** and **Warning** in the **Last response** field.
+    4. You can also disable all the rules with **Failed** or **Warning** in the **Last response** field.
 
 ## EICAR Malware Test
 1. If not using **Elastic Security antivirus**, disable **Windows Security > Virus & threat protection settings > Real-time protection**.
