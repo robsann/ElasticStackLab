@@ -19,6 +19,12 @@ The procedure to build this lab can be found [here](https://github.com/robsann/E
 ## Diagram
 <img src="images/elastic_diagram.png" title="Diagram"/>
 
+## VirtualBox Internal Network
+In the VirtualBox Internal Network the virtual machines can communicate only with each other.
+
+<img src="images/intnet1.png" title="IP Addresses"/>
+
+
 ### IP Addresses
 <img src="images/ip_addresses.png" title="IP Addresses"/>
 
