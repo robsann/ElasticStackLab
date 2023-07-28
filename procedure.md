@@ -93,19 +93,19 @@
         ```
         $ ifconfig
         ```
-    4. (Optional)   If you need to add or remove network adapters on VirtualBox Manager later, edit netplan:
-        1. Edit netplan .yaml file so NetworkManager will manage the network interfaces:
-        ```
-        $ sudo nano /etc/netplan/*yaml
-            network:
-              version: 2
-              renderer: NetworkManager
-        ```
+    4. (Optional) If you need to remove or add network adapters to the virtual machine later, set NetworkManager to manage the network interfaces:
+        1. Edit netplan `.yaml` file:
+            ```
+            $ sudo nano /etc/netplan/*yaml
+                network:
+                  version: 2
+                  renderer: NetworkManager
+            ```
         2. Apply the netplan changes restart the NetworkManager:
-        ```
-        $ sudo netplan apply
-        $ sudo systemctl restart NetworkManager
-        ```
+            ```
+            $ sudo netplan apply
+            $ sudo systemctl restart NetworkManager
+            ```
     5. Firewall configuration with UFW:
         1. Allow Firewall ports 9200 (Elasticsearch), 5601 (Kibana - Web UI), 8220 (Fleet), and 22 (SSH).
             ```
