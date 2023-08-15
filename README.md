@@ -13,6 +13,15 @@ This lab aims to explore Elastic Stack's detection and visualization capabilitie
   - EICAR Malware Test.
   - MITRE ATT&CK Test with Red Team Automation (RTA).
 
+## Tools
+- **Kali Linux**
+  - **VirtualBox**
+    - **Ubuntu Server**
+      - **Elastic Stack**
+    - **Windows 10**
+      - **EICAR Malware Test**
+      - **MITRE ATT&CK Test with RTA**
+
 ## Procedure
 The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md) and it was adapted from [Reda BELHAJ](https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack).
 
