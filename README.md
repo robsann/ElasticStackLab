@@ -45,7 +45,7 @@ In the VirtualBox Internal Network the virtual machines can communicate only wit
 
 ### 1.1 - Elastic Stack
 At the core of Elastic Stack are Elasticsearch and Kibana, and Elastic Agent and Integrations are used to ship data from endpoints.
-- **Elasticsearch** is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happens.
+- **Elasticsearch** is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happen.
 - **Kibana** enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
 - **Elastic Agent** is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. 
 - **Integrations** are part of the agent's policy to collect data sources such as logs and metrics, to provide security protections, and more. Agent's policy can be updated to add or remove integrations. Elastic Integrations are powered by Elastic Agent.
@@ -62,12 +62,16 @@ All communication between the Fleet UI and Fleet Server happens through Elastics
 <img src="images/1/2-fleet_agents.png" title="Fleet Agents"/>
 
 ### 1.3 - Fleet Server Policy
-The **Fleet Server Policy** includes only the **Fleet Server integration**. The **System integration** added automatically with the Fleet Server integration was removed. However, it can be kept if one wishes to collect logs and metrics to monitor the host acting as the Fleet Server.
+The Fleet Server was installed in the Ubuntu Server (Elastic Host) and its Policy includes only the Fleet Server integration. The System integration that was added automatically when adding the Fleet Server integration and is used to ship log and metric files was removed. However, it can be kept if one wishes to collect logs and metrics to monitor the host acting as the Fleet Server.
 
 <img src="images/1/3-fleet_server_policy.png" title="Fleet Server Policy"/>
 
 #### 1.3.1 - Fleet Server Integration
-The **Fleet Server** is what connects **Elastic Agents** to **Fleet**. It can support an extensive infrastructure and handle numerous Elastic Agent connections. It is available for both Elastic Cloud and self-managed clusters. The **Fleet Server** is launched as a separate process within an Elastic Agent on a server and communicates with the deployed Elastic Agents. Its responsibilities include updating agent policies, gathering status information, and coordinating actions across Elastic Agents.
+The Fleet Server is what connects Elastic Agents to Fleet. Here are some key characteristics:
+- It can support an extensive infrastructure and handle numerous Elastic Agent connections.
+- It is available for both Elastic Cloud and self-managed clusters.
+- The Fleet Server is launched as a separate process within an Elastic Agent on a server and communicates with the deployed Elastic Agents.
+- Its responsibilities include updating agent policies, gathering status information, and coordinating actions across Elastic Agents.
 
 <img src="images/1/3.1-fleet_server_integration.png" title="Fleet Server Integration"/>
 
