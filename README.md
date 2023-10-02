@@ -106,22 +106,22 @@ The Windows integration collects two types of data: logs and metrics.
 
 	Log collection for the Security, Application, and System event logs is handled by the System integration.
 - **Metrics** give insight into the state of the machine. Metric data streams collected by the Windows integration include:
-	- `service details` and `performance counter` values.
+	- `service details` and `performance counter values`.
 
 In this configuration, only logs were collected.
 
 <img src="images/1/4.2-windows_integration.png" title="Windows Integration"/>
 
 #### 1.4.3 - Elastic Defend Integration
-The **Elastic Defend integration** provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on traditional endpoints and public cloud environments. Here **Elastic Defend** was used for threat detection.
+The Elastic Defend integration provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on traditional endpoints and public cloud environments. In this setup, the Elastic Defend Malwere protection was used for threat detection.
 
-The **Elastic Defend integration** collects two types of data: **logs** and **metrics**.
+The Elastic Defend integration collects two types of data: logs and metrics.
 - **Logs** - The log type of documents are stored in the `logs-endpoint.*` indices. The following sections define the mapped fields sent by the endpoint:
   - `alerts`, `file`, `library`, `network`, `process`, `registry`, and `security`.
 - **Metrics** - The metrics type of documents are stored in `metrics-endpoint.*` indices. Metrics documents contain performance information about the endpoint executable and the host it is running on. The following section defines the mapped fields sent by the endpoint:
   - `metadata`, `metrics`, and `policy response`.
 
-The **Malware** protection was enabled on the **Detect** mode and **Elastic** was registered as an official **Antivirus** solution for the Windows 10 VM, disabling the Windows Defender Antivirus.
+The Malware protection was enabled on the Detect mode and Elastic was registered as an official Antivirus solution for the Windows 10 VM, disabling the Windows Defender Antivirus.
 
 <img src="images/1/4.3-elastic_defend_integration.png" title="Elastic Defend Integration"/>
 
