@@ -37,11 +37,7 @@ In the VirtualBox Internal Network the virtual machines can communicate only wit
 <img src="images/ip_addresses.png" title="IP Addresses"/>
 
 <br/><br/>
-## Setup Overview
-
-## Elastic Stack Overview
-
-## 1 - Elastic Stack, Fleet, Policies and Victim Setup
+## Elastic Stack and Setup Overview
 
 ### 1.1 - Elastic Stack
 At the core of Elastic Stack are Elasticsearch and Kibana, the data engine and the user interface respectively, and Elastic Agent and Integrations used to ship data from endpoints.
