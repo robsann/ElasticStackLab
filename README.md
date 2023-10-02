@@ -44,7 +44,7 @@ In the VirtualBox Internal Network the virtual machines can communicate only wit
 ## 1 - Elastic Stack, Fleet, Policies and Victim Setup
 
 ### 1.1 - Elastic Stack
-At the core of Elastic Stack are Elasticsearch and Kibana, and Elastic Agent and Integrations are used to ship data from endpoints.
+At the core of Elastic Stack are Elasticsearch and Kibana, the data engine and the user interface respectively, and Elastic Agent and Integrations used to ship data from endpoints.
 - **Elasticsearch** is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happen.
 - **Kibana** enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
 - **Elastic Agent** is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. 
