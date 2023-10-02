@@ -33,25 +33,23 @@ In the VirtualBox Internal Network the virtual machines can communicate only wit
 
 <img src="images/intnet1.png" title="IP Addresses"/>
 
-
 ### IP Addresses
 <img src="images/ip_addresses.png" title="IP Addresses"/>
 
 <br/><br/>
-# Highlights
+## Setup Overview
+
+## Ubuntu Server (Elastic Host)
 
 ## 1 - Elastic Stack, Fleet, Policies and Victim Setup
 
 ### 1.1 - Elastic Stack
-
-At the core of **Elastic Stack** is **Elasticsearch** and **Kibana**. In the recent versions **Elastic Agent + Integrations** have been used to ship data.
-
-**Elasticsearch** is the distributed search and analytics engine at the heart of the **Elastic Stack**. **Elasticsearch** is where the indexing, search, and analysis magic happens.
-
-**Kibana** enables the user interface to navigate the **Elastic Stack**. With **Kibana**, you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
-
-**Elastic Agent** is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. Each **agent** has a **single policy** that can be updated to add integrations for new data sources, security protections, and more. **Elastic integrations** are powered by **Elastic Agent**.
-
+At the core of Elastic Stack are Elasticsearch and Kibana, and Elastic Agent and Integrations are used to ship data from endpoints.
+- Elasticsearch is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happens.
+- Kibana enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
+- Elastic Agent is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. 
+- Integrations are part of the agent's policy to collect data sources such as logs and metrics, to provide security protections, and more. Agent's policy can be updated to add or remove integrations. Elastic Integrations are powered by Elastic Agent.
+  
 <p align="center">
   <img src="images/1/1-elastic-stack.png" width="470" title="Elastic Stack"/>
 </p>
