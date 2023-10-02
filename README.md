@@ -39,25 +39,25 @@ In the VirtualBox Internal Network the virtual machines can communicate only wit
 <br/><br/>
 ## Setup Overview
 
-## Ubuntu Server (Elastic Host)
+## Elastic Stack Overview
 
 ## 1 - Elastic Stack, Fleet, Policies and Victim Setup
 
 ### 1.1 - Elastic Stack
 At the core of Elastic Stack are Elasticsearch and Kibana, and Elastic Agent and Integrations are used to ship data from endpoints.
-- Elasticsearch is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happens.
-- Kibana enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
-- Elastic Agent is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. 
-- Integrations are part of the agent's policy to collect data sources such as logs and metrics, to provide security protections, and more. Agent's policy can be updated to add or remove integrations. Elastic Integrations are powered by Elastic Agent.
+- **Elasticsearch** is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happens.
+- **Kibana** enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
+- **Elastic Agent** is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. 
+- **Integrations** are part of the agent's policy to collect data sources such as logs and metrics, to provide security protections, and more. Agent's policy can be updated to add or remove integrations. Elastic Integrations are powered by Elastic Agent.
   
 <p align="center">
   <img src="images/1/1-elastic-stack.png" width="470" title="Elastic Stack"/>
 </p>
 
 ### 1.2 - Fleet and Elastic Agents
-**Fleet** provides a web-based UI in Kibana for centrally managing **Elastic Agents** and their policies. **Fleet** serves as the communication channel back to the **Elastic Agents**. **Agents** check in for the latest updates regularly. When an **agent policy** is changed, all the agents receive the update during their next check-in. To upgrade the **Elastic Agent** binaries or integrations, upgrades can be initiated in **Fleet**, and the **Elastic Agents** running on the hosts will upgrade automatically.
+Fleet provides a web-based UI in Kibana for centrally managing Elastic Agents and their policies. Fleet serves as the communication channel back to the Elastic Agents. Agents check in for the latest updates regularly. When an agent policy is changed, all the agents receive the update during their next check-in. To upgrade the Elastic Agent binaries or integrations, the upgrades can be initiated in Fleet, and the Elastic Agents running on the hosts will upgrade automatically.
 
-All communication between the **Fleet UI** and **Fleet Server** happens through **Elasticsearch**. **Fleet** writes policies, actions, and any changes to the `fleet-*` indices in **Elasticsearch**. Each **Fleet Server** monitors the indices, picks up changes, and ships them to the **Elastic Agents**. To communicate to **Fleet** about the status of the **Elastic Agents** and the **policy rollout**, the **Fleet Servers** write updates to the `fleet-*` indices.
+All communication between the Fleet UI and Fleet Server happens through Elasticsearch. Fleet writes policies, actions, and any changes to the `fleet-*` indices in Elasticsearch. Each Fleet Server monitors the indices, picks up changes, and ships them to the Elastic Agents. To communicate to the Fleet about the status of the Elastic Agents and the policy rollout, the Fleet Servers write updates to the `fleet-*` indices.
 
 <img src="images/1/2-fleet_agents.png" title="Fleet Agents"/>
 
