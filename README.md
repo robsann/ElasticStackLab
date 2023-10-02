@@ -76,36 +76,39 @@ The Fleet Server is what connects Elastic Agents to Fleet. Here are some key cha
 <img src="images/1/3.1-fleet_server_integration.png" title="Fleet Server Integration"/>
 
 ### 1.4 - Windows Endpoint Policy
-The **Windows Endpoint Policy** comprises the **Elastic Defend**, **System**, and **Windows** integrations.
+The Windows Endpoint Policy comprises the Elastic Defend, System, and Windows integrations.
+- Elastic Defend will be used to as an anti virus.
+- System will colect the logs and metrics.
+- Windows will coletct the event viewr logs.
 
 <img src="images/1/4-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
 
 #### 1.4.1 - System Integration
-The **System integration** allows for monitoring servers, personal computers, and other devices. This integration collects metrics (state) and logs (events) from the devices. The data collected can be visualized in Kibana, alerts can be created to notify if something goes wrong, and data can be referenced when troubleshooting an issue.
+The System integration allows for monitoring servers, personal computers, and other devices. This integration collects metrics (state) and logs (events) from the devices. The data collected can be visualized in Kibana. Alerts can be created to notify if something goes wrong, and data can be referenced when troubleshooting an issue.
 
-The **System integration** collects two types of data: **logs** and **metrics**.
+The System integration collects two types of data: logs and metrics.
 - **Logs** help to keep a record of events that happen on the machine. Log data streams collected by the System integration include:
-  - On **Windows** machines: `application`, `system`, and `security`.
-  - On **macOS** or **Linux** machines: `auth` and `syslog`.
+  - On Windows machines: `application`, `system`, and `security`.
+  - On macOS or Linux machines: `auth` and `syslog`.
 - **Metrics** give insight into the state of the machine. Metric data streams collected by the System integration include:
-  - `CPU usage`, `load statistics`, `memory usage`, `information on network behavior`, and more.
+  - CPU usage, load statistics, memory usage, information on network behavior, and more.
 
-In this configuration, only **logs** were collected.
+In this configuration, only logs were collected.
 
 <img src="images/1/4.1-system_integration.png" title="System Integration"/>
 
 #### 1.4.2 - Winows Integration
-The **Windows integration** allows monitoring of the Windows OS, services, applications, and more. The **Windows integration** collects metrics (state) and logs (events) from the machine. These data can be visualized in Kibana, alerts to notify if something goes wrong can be created, and data can be referenced when troubleshooting an issue.
+The Windows integration allows monitoring of the Windows OS, services, applications, and more. The Windows integration collects metrics (state) and logs (events) from the machine. These data can be visualized in Kibana, alerts to notify if something goes wrong can be created, and data can be referenced when troubleshooting an issue.
 
-The **Windows integration** collects two types of data: **logs** and **metrics**.
+The Windows integration collects two types of data: logs and metrics.
 - **Logs** help to keep a record of events that happen on the machine. Log data streams collected by the Windows integration include:
 	- `forwarded events`, `PowerShell events`, and `Sysmon events`.
 
-	Log collection for the **Security**, **Application**, and **System** event logs is handled by the **System integration**.
+	Log collection for the Security, Application, and System event logs is handled by the System integration.
 - **Metrics** give insight into the state of the machine. Metric data streams collected by the Windows integration include:
 	- `service details` and `performance counter` values.
 
-In this configuration, only **logs** were collected.
+In this configuration, only logs were collected.
 
 <img src="images/1/4.2-windows_integration.png" title="Windows Integration"/>
 
