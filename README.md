@@ -1,5 +1,5 @@
 # Threat Hunting with Elastic Stack 8 (XDR)
-<div style="text-align: justify">
+<div align="justify">
 This lab aims to explore Elastic Stack's detection and visualization capabilities by performing malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was created to provide IP addresses for an internal network with two virtual machines (VM): an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have two network adapters, one connected to a NAT with internet access and the other to the internal network. The Elastic Stack 8 (XDR) was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. The Elastic Agent was used to collect data from the victim's machine.
 
 ## Summary
@@ -216,4 +216,5 @@ Table with the 45 detection rules with the id and name for the technique and tac
 The following table contains the commands executed in the process and the parent process for each rule activated during the test. The table also shows each command's username and event action and severity.
 
 <img src="images/3/3.2-processes_per_rule.png" title="Processes per Rule"/>
+
 </div>
