@@ -1,4 +1,5 @@
 # Threat Hunting with Elastic Stack 8 (XDR)
+<div style="text-align: justify">
 This lab aims to explore Elastic Stack's detection and visualization capabilities by performing malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was created to provide IP addresses for an internal network with two virtual machines (VM): an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have two network adapters, one connected to a NAT with internet access and the other to the internal network. The Elastic Stack 8 (XDR) was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. The Elastic Agent was used to collect data from the victim's machine.
 
 ## Summary
@@ -122,7 +123,7 @@ The Malware protection was enabled on the Detect mode and Elastic was registered
 <img src="images/1/4.3-elastic_defend_integration.png" title="Elastic Defend Integration"/>
 
 ### 1.5 - Windows Security
-The tests were performed with the **Elastic Security Antivirus** active and the **SmartScreen for Microsoft Edge** turned off.
+The tests were performed with the Elastic Security Antivirus active and the SmartScreen for Microsoft Edge turned off.
 
 #### 1.5.1 - Elastic Security Antivirus
 The Elastic Security Antivirus from the Elastic Defender integration was used instead of the Microsoft Defender Antivirus. Alternatively, the Microsoft Defender Antivirus can be used during the tests with the Real-time protection turned off.
@@ -138,40 +139,40 @@ The SmartScreen for Microsoft Edge was turned off to be able to download the mal
 
 ## 2 - EICAR Malware Test
 
-The **EICAR Ant-Virus Test File** or **EICAR test file** is a computer file that was developed by the European Institute for Computer Antivirus Research (**EICAR**) and Computer Antivirus Rsearch Organization (**CARO**) to test the response of computer antivirus (AV) programs.
+The EICAR Ant-Virus Test File or EICAR test file is a computer file that was developed by the European Institute for Computer Antivirus Research (EICAR) and the Computer Antivirus Rsearch Organization (CARO) to test the response of computer antivirus (AV) programs.
 
-**EICAR test file** is one of the most well-known **security string** which can be used to check the level of protection an antivirus software can offer. The **EICAR Standard Anti-Virus Test File** contains the **ASCII string** which, when interpreted by command processor, returns the message string to the standard output and exits back to the command prompt. This test file holds a simple text file which they call `eicar.com` containing the **ASCII string**, which they use in scanning files.
+EICAR test file is one of the most well-known security string which can be used to check the level of protection an antivirus software can offer. The EICAR Standard Anti-Virus Test File contains the ASCII string which, when interpreted by command processor, returns the message string to the standard output and exits back to the command prompt. This test file holds a simple text file which they call `eicar.com` containing the ASCII string, which they use in scanning files.
 
 <!-- <img src="images/2/1.1-eicar_description.png" title="EICAR Description"/> -->
 
 ### 2.1.1 - EIRCAR Website
-In the [EICAR website](https://www.eicar.org/download-anti-malware-testfile/), under **Download area using the secure, SSL enabled protocol HTTPS**, the four versions of the `eicar.com` can be downloaded: the original file, the `eicar.com.txt` variant, and two compressed files, one with `eicar.com` compressed one time (`eicar_com.zip`) and the other two times (`eicarcom2.zip`).
+In the [EICAR website](https://www.eicar.org/download-anti-malware-testfile/), under Download area using the secure, SSL enabled protocol HTTPS, the four versions of the `eicar.com` file can be downloaded: the original file, the `eicar.com.txt` variant, and two compressed files, one with `eicar.com` compressed one time (`eicar_com.zip`) and the other two times (`eicarcom2.zip`).
 
 <img src="images/2/1.1-eicar_website.png" title="EICAR Website"/>
 
 ### 2.1.2 - EICAR Files
-**EICAR** downloaded and extracted **files**.
+EICAR downloaded and extracted files.
 
 <img src="images/2/1.2-eicar_files.png" title="EICAR Downloaded Files"/>
 
 ### 2.2.1 - Endpoint Security Rule
-The **Endpoint Security Rule** generates a detection alert (signal event) each time an **Elastic Endpoint Security** alert event is received. Enabling this rule allows the investigation of **Endpoint alerts** on **Elastic Security**. Only this rule was enabled to perform the **EICAR Malware Test**.
+The Endpoint Security Rule generates a detection alert (signal event) each time an Elastic Endpoint Security alert event is received. Enabling this rule allows the investigation of Endpoint alerts on Elastic Security. Only this rule was enabled to perform the EICAR Malware Test.
 
 <img src="images/2/2.1-endpoint_security_rule.png" title="Endpoint Security Rule"/>
 
 
 ### 2.2.2 - Elastic Analytics Discover
-Under the current configuration, the **EICAR Malware Test** should generate 16 events: 8 alerts sent by **Elastic Endpoint Security** and 8 signals generated by the **Endpoint Security Rule**. During the download of the `eicar.com` file, **Elastic Endpoint Security** should send three alerts: one creation event of a `.tmp` file and two rename events for the `eicar.com.crdownload` and `eicar.com` files. The same should happen for the `eicar.com.txt` file and the compressed files should generate one alert each during the extraction of the `eicar.com` file. The current test detected 14 events using the filter `message: "Malware Detection Alert`: 7 alerts and 7 signals. The rename event of the `eicar.com.txt.crdownload` file was not detected during the trial.
+Under the current configuration, the EICAR Malware Test should generate 16 events: 8 alerts sent by Elastic Endpoint Security and 8 signals generated by the Endpoint Security Rule. During the download of the `eicar.com` file, Elastic Endpoint Security should send three alerts: one creation event of a `.tmp` file and two rename events for the `eicar.com.crdownload` and `eicar.com` files. The same should happen for the `eicar.com.txt` file and the compressed files should generate one alert each during the extraction of the `eicar.com` file. The current test detected 14 events using the filter `message: "Malware Detection Alert`: 7 alerts and 7 signals. The rename event of the `eicar.com.txt.crdownload` file was not detected during the trial.
 
 <img src="images/2/2.2-elastic_analytics_discover.png" title="Analytics Discover"/>
 
 ### 2.2.3 - Elastic Security Dashboard Overview
-On **Security > Dashboards > Overview**, using the filter `message: "Malware Detection Alert`, it can be seen in the middle on **Events** the 7 alert events received from **Elastic Endpoint Security** and at the top on **Alert trend** the 7 signal events generated by the **Endpoint Security Rule**. At the bottom, the **Host events** section shows that the 7 events sent by **Endpoint Security** were from the **File** category.
+On `Security > Dashboards > Overview`, using the filter `message: "Malware Detection Alert"`, it can be seen in the middle on Events the 7 alert events received from Elastic Endpoint Security and at the top on Alert trend the 7 signal events generated by the Endpoint Security Rule. At the bottom, the Host events section shows that the 7 events sent by Endpoint Security were from the File category.
 
 <img src="images/2/2.3-elastic_security_dashboard.png" title="Security Dashboard Overview"/>
 
 ### 2.2.4 - Elastic Security Alerts
-On **Security > Alerts**, it is shown the 7 alerts (signal events) generated by the **Malware Detection Alert** rule: four creation events for each file and two rename events for `eicar.com.crdownload` and `eicar.com`, and one rename event for `eicar.com.txt`.
+On `Security > Alerts`, it is shown the 7 alerts (signal events) generated by the Malware Detection Alert rule: four creation events for each file and two rename events for `eicar.com.crdownload` and `eicar.com`, and one rename event for `eicar.com.txt`.
 
 <img src="images/2/2.4-elastic_security_alerts.png" title="Security Alerts"/>
 
@@ -180,11 +181,11 @@ On **Security > Alerts**, it is shown the 7 alerts (signal events) generated by 
 ## 3 - MITRE ATT&CK Test with Red Team Automation (RTA)
 [RTA](https://github.com/endgameinc/RTA) provides a framework of scripts designed to allow blue teams to test their detection capabilities against malicious tradecraft, modeled after [MITRE ATT&CK](https://attack.mitre.org/wiki/ATT&CK_Matrix).
 
-**RTA** is composed of python scripts that generate evidence of **over 50 different ATT&CK tactics**, as well as a **compiled binary application** that performs activities such as **file timestopping**, **process injections**, and **beacon simulation** as needed.
+RTA is composed of python scripts that generate evidence of over 50 different ATT&CK tactics, as well as a compiled binary application that performs activities such as file timestopping, process injections, and beacon simulation as needed.
 
-Where possible, **RTA** attempts to perform the malicious activity described. In other cases, the **RTAs** will emulate all or parts of the activity. For example, some lateral movement will, by default, target the local host (though parameters typically allow for multi-host testing). In other cases, executables such as cmd.exe or python.exe will be renamed to make it appears as if a Windows binary is doing non-standard activities.
+Where possible, RTA attempts to perform the malicious activity described. In other cases, the RTAs will emulate all or parts of the activity. For example, some lateral movement will, by default, target the local host (though parameters typically allow for multi-host testing). In other cases, executables such as cmd.exe or python.exe will be renamed to make it appears as if a Windows binary is doing non-standard activities.
 
-To run the **MITRE ATT&CK Test with RTA**, all the rules in **Security > Manage > Rules** on **Kibana** were enabled except the **My First Rule** rule, **Multiple Alerts Involving a User** rule, and **Multiple Alerts in Different ATT&CK Tactics on a Single Host** rule. Furthermore, all the rules with **Failed** or **Warning** in the **Last response** field were disabled.
+To run the MITRE ATT&CK Test with RTA, all the rules in `Security > Manage > Rules` on Kibana were enabled except the My First Rule rule, Multiple Alerts Involving a User rule, and Multiple Alerts in Different ATT&CK Tactics on a Single Host rule. Furthermore, all the rules with Failed or Warning in the Last response field were disabled.
 
 ### 3.1 - Alerts Over Time
 The test took less than 15 minutes and generated 247 signal events by 45 detection rules that detected the activity of 25 Python scripts using 49 unique executables. The chart below shows the signal events generated over time.
@@ -215,5 +216,4 @@ Table with the 45 detection rules with the id and name for the technique and tac
 The following table contains the commands executed in the process and the parent process for each rule activated during the test. The table also shows each command's username and event action and severity.
 
 <img src="images/3/3.2-processes_per_rule.png" title="Processes per Rule"/>
-
-
+</div>
