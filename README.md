@@ -3,16 +3,16 @@
 This lab aims to explore Elastic Stack 8's detection and visualization capabilities by performing malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was created to provide IP addresses for an internal network with two virtual machines (VM): an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have two network adapters, one connected to a NAT with internet access and the other to the internal network. The Elastic Stack 8 (XDR) was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. The Elastic Agent was used to collect data from the victim's machine.
 
 ## Summary
-- Configured in VirtualBox an Internal Network with:
+- Set up an Internal Network in VirtualBox, including:
   - DHCP Server
-  - Ubuntu Server (Elastic Host)
-  - Windows 10 (Victim)
-- Configured Elastic Stack 8 on Ubuntu Server:
-  - Elastic Stack 8: Elasticsearch, Kibana (UI), and Elastic Agent with Integrations.
-  - Integrations: Fleet Server, System, Windows, and Elastic Defend.
-- Simulated two malicious tests:
-  - EICAR Malware Test.
-  - MITRE ATT&CK Test with Red Team Automation (RTA).
+  - Ubuntu Server VM (Elastic Host)
+  - Windows 10 VM (Victim)
+- Installed Elastic Stack 8 on the Ubuntu Server, comprising:
+  - Elasticsearch and Kibana (UI).
+  - Elastic Agent with various Integrations: Fleet Server, System, Windows, and Elastic Defend.
+- Conducted two simulated malicious tests:
+  - EICAR Malware Test
+  - MITRE ATT&CK Test using Red Team Automation (RTA).
 
 ## Tools
 - **Kali Linux**
@@ -36,16 +36,17 @@ The image below displays the VirtualBox Internal Network named intnet1. In this 
 
 ### IP Addresses
 
-Below is an image showing the IP addresses of Ubuntu Server VM (left) and Windows 10 VM (right).
+Below is an image showing the IP addresses of the Ubuntu Server VM (left) and the Windows 10 VM (right).
 
 <img src="images/ip_addresses.png" title="IP Addresses"/>
 
 <br/><br/>
 # Setup Overview and Tests
 
-## 1 - Elastic Stack and Setup Overview
+## 1 - Elastic Stack 8 and Windows Security Setup
+This section provides an overview of Elastic Stack 8, detailing the created policies and the integrations utilized in each policy. Additionally, it discusses the Windows Security setup employed in this lab.
 
-### 1.1 - Elastic Stack
+### 1.1 - Elastic Stack 8
 At the core of the Elastic Stack 8 comprises Elasticsearch, the robust data engine, and Kibana, the intuitive user interface. Additionally, Elastic Agent and Integrations are employed to ship data from endpoints.
 - **Elasticsearch** is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happen.
 - **Kibana** enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
