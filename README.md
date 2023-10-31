@@ -1,6 +1,6 @@
 # Threat Hunting with Elastic Stack 8 (XDR)
 <div align="justify">
-This lab aims to explore Elastic Stack's detection and visualization capabilities by performing malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was created to provide IP addresses for an internal network with two virtual machines (VM): an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have two network adapters, one connected to a NAT with internet access and the other to the internal network. The Elastic Stack 8 (XDR) was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. The Elastic Agent was used to collect data from the victim's machine.
+This lab aims to explore Elastic Stack 8's detection and visualization capabilities by performing malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was created to provide IP addresses for an internal network with two virtual machines (VM): an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have two network adapters, one connected to a NAT with internet access and the other to the internal network. The Elastic Stack 8 (XDR) was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. The Elastic Agent was used to collect data from the victim's machine.
 
 ## Summary
 - Configured in VirtualBox an Internal Network with:
@@ -8,7 +8,7 @@ This lab aims to explore Elastic Stack's detection and visualization capabilitie
   - Ubuntu Server (Elastic Host)
   - Windows 10 (Victim)
 - Configured Elastic Stack 8 on Ubuntu Server:
-  - Elastic Stack: Elasticsearch, Kibana (UI), and Elastic Agent + Integrations.
+  - Elastic Stack 8: Elasticsearch, Kibana (UI), and Elastic Agent with Integrations.
   - Integrations: Fleet Server, System, Windows, and Elastic Defend.
 - Simulated two malicious tests:
   - EICAR Malware Test.
@@ -18,23 +18,26 @@ This lab aims to explore Elastic Stack's detection and visualization capabilitie
 - **Kali Linux**
   - **VirtualBox**
     - **Ubuntu Server**
-      - **Elastic Stack**
+      - **Elastic Stack 8**
     - **Windows 10**
       - **EICAR Malware Test**
       - **MITRE ATT&CK Test with RTA**
 
 ## Procedure
-The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md) and it was adapted from [Reda BELHAJ](https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack).
+The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md). It was adapted from [Reda BELHAJ](https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack).
 
 ## Diagram
 <img src="images/elastic_diagram.png" title="Diagram"/>
 
 ## VirtualBox Internal Network
-In the VirtualBox Internal Network, the virtual machines can communicate only with each other.
+The image below displays the VirtualBox Internal Network named intnet1. In this type of virtual network, the virtual machines can only communicate with each other.
 
 <img src="images/intnet1.png" title="IP Addresses"/>
 
 ### IP Addresses
+
+Below is an image showing the IP addresses of Ubuntu Server VM (left) and Windows 10 VM (right).
+
 <img src="images/ip_addresses.png" title="IP Addresses"/>
 
 <br/><br/>
@@ -43,7 +46,7 @@ In the VirtualBox Internal Network, the virtual machines can communicate only wi
 ## 1 - Elastic Stack and Setup Overview
 
 ### 1.1 - Elastic Stack
-At the core of Elastic Stack are Elasticsearch and Kibana, the data engine and the user interface respectively, and Elastic Agent and Integrations used to ship data from endpoints.
+At the core of the Elastic Stack 8 comprises Elasticsearch, the robust data engine, and Kibana, the intuitive user interface. Additionally, Elastic Agent and Integrations are employed to ship data from endpoints.
 - **Elasticsearch** is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happen.
 - **Kibana** enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
 - **Elastic Agent** is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. 
