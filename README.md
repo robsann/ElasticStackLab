@@ -1,6 +1,6 @@
 # Threat Hunting with Elastic Stack 8 (XDR)
 <div align="justify">
-This lab aims to explore Elastic Stack 8's detection and visualization capabilities by performing malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was created to provide IP addresses for an internal network with two virtual machines (VM): an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have two network adapters, one connected to a NAT with internet access and the other to the internal network. The Elastic Stack 8 (XDR) was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. The Elastic Agent was used to collect data from the victim's machine.
+This lab aims to explore the detection and visualization capabilities of Elastic Stack 8 by conducting malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was set up to provide IP addresses for an internal network with two virtual machines: an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have dual network adapters, one linked to a NAT with internet access and the other to the internal network. Elastic Stack 8 was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. Data was gathered from the victim's machine using the Elastic Agent.
 
 ## Summary
 - Set up an Internal Network in VirtualBox, including:
@@ -65,7 +65,7 @@ All communication between the Fleet UI and Fleet Server happens through Elastics
 <img src="images/1/2-fleet_agents.png" title="Fleet Agents"/>
 
 ### 1.3 - Fleet Server Policy
-The Fleet Server was installed in the Ubuntu Server (Elastic Host) and its Policy includes only the Fleet Server integration. The System integration that was added automatically when adding the Fleet Server integration and is used to ship log and metric files was removed. However, it can be kept if one wishes to collect logs and metrics to monitor the host acting as the Fleet Server.
+The Fleet Server was installed on the Ubuntu Server (Elastic Host), and its policy incorporates the Fleet Server integration. The System integration was included automatically with the Fleet Server integration but was removed from the Fleet Server policy. The System integration is utilized for shipping log and metric files to the Elastic Host. It can be retained if one desires to collect logs and metrics for monitoring the host operating as the Fleet Server.
 
 <img src="images/1/3-fleet_server_policy.png" title="Fleet Server Policy"/>
 
@@ -116,7 +116,7 @@ In this configuration, only logs were collected.
 <img src="images/1/4.2-windows_integration.png" title="Windows Integration"/>
 
 #### 1.4.3 - Elastic Defend Integration
-The Elastic Defend integration provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on traditional endpoints and public cloud environments. In this setup, the Elastic Defend Malware protection was used for threat detection.
+The Elastic Defend integration provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on traditional endpoints and public cloud environments. In this setup, Elastic Defend Malware protection was used for threat detection.
 
 The Elastic Defend integration collects two types of data: logs and metrics.
 - **Logs** - The log type of documents are stored in the `logs-endpoint.*` indices. The following sections define the mapped fields sent by the endpoint:
@@ -124,7 +124,7 @@ The Elastic Defend integration collects two types of data: logs and metrics.
 - **Metrics** - The metrics type of documents are stored in `metrics-endpoint.*` indices. Metrics documents contain performance information about the endpoint executable and the host it is running on. The following section defines the mapped fields sent by the endpoint:
   - `metadata`, `metrics`, and `policy response`.
 
-The Malware protection was enabled on the Detect mode and Elastic was registered as an official Antivirus solution for the Windows 10 VM, disabling the Windows Defender Antivirus.
+Malware protection was activated in Detect mode, and Elastic Security Antivirus was designated as the official antivirus solution for the Windows 10 virtual machine, automatically deactivating Windows Defender Antivirus.
 
 <img src="images/1/4.3-elastic_defend_integration.png" title="Elastic Defend Integration"/>
 
@@ -132,12 +132,12 @@ The Malware protection was enabled on the Detect mode and Elastic was registered
 The tests were performed with the Elastic Security Antivirus active and the SmartScreen for Microsoft Edge turned off.
 
 #### 1.5.1 - Elastic Security Antivirus
-The Elastic Security Antivirus from the Elastic Defender integration was used instead of the Microsoft Defender Antivirus. Alternatively, the Microsoft Defender Antivirus can be used during the tests with the Real-time protection turned off.
+The Elastic Security Antivirus, integrated with Elastic Defender, was employed instead of Microsoft Defender Antivirus. Alternatively, Microsoft Defender Antivirus can be used for testing, with Real-time protection disabled, to be able to save on disk the malicious files.
 
 <img src="images/1/5.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
 
 #### 1.5.2 - Microsoft Defender SmartScreen
-The SmartScreen for Microsoft Edge was turned off to be able to download the malicious files in the EICAR Malware Test.
+The SmartScreen for Microsoft Edge was turned off, enabling to download the malicious files in the EICAR Malware Test.
 
 <img src="images/1/5.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
 
