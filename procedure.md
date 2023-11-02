@@ -105,7 +105,7 @@
                       dhcp4: no
                       addresses: [172.16.1.101/24]
             ```
-        2. Apply the netplan changes restart the NetworkManager:
+        2. Restrict permissions to avoid warnings, apply the netplan changes, and restart the NetworkManager if needed:
             ```
             $ sudo netplan apply
             $ sudo systemctl restart NetworkManager
