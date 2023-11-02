@@ -11,7 +11,7 @@
         - Adapter 2: Internal Network (intnet1) - 172.16.1.102
 
 ## Creation of the DHCP Server
-1. On the host create the DHCP Server on VirtualBox with the command below:
+1. Create the DHCP Server on VirtualBox by executing the following command on the host:
     ```
     $ VBoxManage dhcpserver add --network=intnet1 --server-ip=172.16.1.100 --netmask=255.255.255.0 --lower-ip=172.16.1.101 --upper-ip=172.16.1.254 --enable
     $ VBoxManage list dhcpservers
@@ -19,7 +19,7 @@
 
 
 ## Ubuntu Server Installation
-1. Download and install [Oracle VM VirtualBox Manager](https://www.virtualbox.org/wiki/Downloads).
+1. Download and install [Oracle VM VirtualBox Manager](https://www.virtualbox.org/wiki/Downloads) on your system.
 2. Download the [Ubuntu Server 22.04.2 installer ISO](https://releases.ubuntu.com/22.04.1/ubuntu-22.04.1-live-server-amd64.iso).
 3. On **VirtualBox Manager** click on **New**:
     1. **Name and operating system**
@@ -93,7 +93,7 @@
         ```
         $ ifconfig
         ```
-    4. (Optional) If you need to remove or add network adapters to the virtual machine later, set NetworkManager to manage the network interfaces:
+    4. (Optional) If you need to remove or add network adapters to the virtual machine later,  follow these steps to set NetworkManager to manage the network interfaces:
         1. Edit netplan `.yaml` file:
             ```
             $ sudo nano /etc/netplan/*yaml
@@ -116,11 +116,11 @@
             $ sudo ufw enable
             $ sudo ufw status
             ```
-    6. From the host machine connect to the Ubuntu Server using SSH with the following command:
+    6. Connect to the Ubuntu Server from the host machine by using SSH with the following command:
         ```
         $ ssh -oHostKeyAlgorithms=+rsa-sha2-512 -p 10022 user@127.0.0.1
         ```
-    where `-p 10022` is the port configured in port forwarding and `user` is the username. This will be useful to be able to use copy and paste.
+    where `-p 10022` is the port set in port forwarding, `user` is the username, and `127.0.0.1` is the localhost (loopback) address. The `-oHostKeyAlgorithms` flag is necessary if the `rsa-sha2-515` algorithm name is not set in `HostKeyAlgorithms` parameter of the `.ssh/config` file. This will be useful to be able to use copy and paste.
 
 ## Windows 10 Installation
 1. Download the [Windows 10 ISO File](https://www.microsoft.com/en-gb/software-download/windows10ISO).
