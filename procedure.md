@@ -93,13 +93,17 @@
         ```
         $ ifconfig
         ```
-    4. (Optional) If you need to remove or add network adapters to the virtual machine later,  follow these steps to set NetworkManager to manage the network interfaces:
+    4. Configure a static IP address for the network interface named `enp0s8`, where the Elastic Host will be deployed. Utilize NetworkManager to efficiently manage the additional adapters connected to other networks:
         1. Edit netplan `.yaml` file:
             ```
             $ sudo nano /etc/netplan/*yaml
                 network:
                   version: 2
                   renderer: NetworkManager
+                  ethernets:
+                    enp0s8:
+                      dhcp4: no
+                      addresses: [172.16.1.101/24]
             ```
         2. Apply the netplan changes restart the NetworkManager:
             ```
