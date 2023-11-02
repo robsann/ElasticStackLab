@@ -190,7 +190,7 @@ PowerShell script block logging captures abnormal PowerShell behavior and produc
 ## Elastic Stack Installation
 
 ### Elasticsearch Installation
-Elasticsearch is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis magic happens.
+Elasticsearch is the distributed search and analytics engine at the heart of the Elastic Stack. It is where the indexing, search, and analysis magic happens.
 
 1. Download and install the public signing key to be able to install from the apt repository:
     ```
