@@ -15,11 +15,11 @@ This lab aims to explore the detection and visualization capabilities of Elastic
   - MITRE ATT&CK Test using Red Team Automation (RTA).
 
 ## Tools
-- **Kali Linux**
+- **Kali Linux (Host)**
   - **VirtualBox**
-    - **Ubuntu Server**
+    - **Ubuntu Server (VM)**
       - **Elastic Stack 8**
-    - **Windows 10**
+    - **Windows 10 (VM)**
       - **EICAR Malware Test**
       - **MITRE ATT&CK Test with RTA**
 
