@@ -37,24 +37,23 @@
         2. **Disk size**: 30 GB
         3. Click on **Create**.
 4. On **VirtualBox Manager** select the **Ubuntu Server VN** created and click on **Settings**.
-    1. On **System > Processor** set 2 CPUs on **Processor(s)**.
-    2. On **Storage** on **Storage Devices** click on  **Controller: IDE > Empty** then click on the disk at the right side of **Optical Drive** and and choose the downloaded **Ubuntu Server image**.
-    3. On **Network** go to:
-        1. **Adaptor 1**:
-            1. **Attached to**: NAT
-            2. On **Advanced** click on **Port Forwarding**.
-                1. On **Port Forwarding Rules** set the following rules to access **Kibana** and **SSH**.
-                    ```
-                    Name            Protocol  Host IP     Host Port   Guest IP    Guest Port
-                    Kibana          TCP       127.0.0.1   15601       10.0.2.15   5601
-                    SSH             TCP       127.0.0.1   10022       10.0.2.15   22
-                    ```
-                2. Click **Ok**.
-                - Using **Port Forwarding** the connections to **HostIP:HostPort** are redirected to **GuestIP:GuestPort**.
-    4. On **Network > Adapter 2**:
+    1. On **System > Processor** set **Processor(s)** to 2 CPUs.
+    2. On **Storage** > **Storage Devices**, click on  **Controller: IDE > Empty** then click on the disk at the right side of **Optical Drive** and and choose the downloaded **Ubuntu Server image**.
+    3. On **Network** > **Adaptor 1** (enp0s3) set:
+        1. **Attached to**: NAT
+        2. On **Advanced** click on **Port Forwarding**.
+            1. On **Port Forwarding Rules** set the following rules to access **Kibana** and **SSH** from the host machine.
+            ```
+            Name            Protocol  Host IP     Host Port   Guest IP    Guest Port
+            Kibana          TCP       127.0.0.1   15601       10.0.2.15   5601
+            SSH             TCP       127.0.0.1   10022       10.0.2.15   22
+            ```
+            - Using **Port Forwarding** the connections to **HostIP:HostPort** are redirected to **GuestIP:GuestPort**.
+            2. Click **Ok**.
+    4. On **Network > Adapter 2** (enp0s8) set:
         1. **Attached to**: Internal Network
         2. **Name**: intnet1
-    4. Click on **OK**.
+    5. Click on **OK**.
 5. On **VirtualBox Manager** select the **Ubuntu Server VM** and click on **Sart**.
     1. Hit enter on **Try or Install Ubuntu Server**.
     2. Select **language**.
