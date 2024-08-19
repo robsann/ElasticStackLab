@@ -74,17 +74,17 @@ First, download the [Ubuntu Server 22.04.1](https://releases.ubuntu.com/22.04.1/
 
 On **VirtualBox Manager** click on **New**:
 
-1. **Name and operating system**
+1. **Name and operating system:**
 	1. Fill in the fields and click **Next**.
-2. **Memory Size**:
+2. **Memory Size:**
 	1. Set 4 GB or more and click **Next**.
-3. **Hard disk**:
+3. **Hard disk:**
 	1. Select **Create a virtual hard disk now** and click **Create**.
-4. **Hard disk file type**:
+4. **Hard disk file type:**
 	1. Select **VDI (VirtualBox Disk Image)** and click **Next**.
-5. **Storage on physical hard disk**:
+5. **Storage on physical hard disk:**
 	1. Select **Dynamically allocated** and click **Next**.
-6. **File location and size**
+6. **File location and size:**
 	1. Choose **file location**.
 	2. **Disk size**: 30 GB
 	3. Click on **Create**.
@@ -97,11 +97,11 @@ On **VirtualBox Manager** click on **New**:
 </summary>
 <span style="color:grey">
 
-On **VirtualBox Manager** select the **Ubuntu Server VN** created and click on **Settings**.
+On **VirtualBox Manager** select the **Ubuntu Server VM** created and click on **Settings**:
 
-1. On **System > Processor** set **Processor(s)** to 2 CPUs.
-2. On **Storage** > **Storage Devices**, click on  **Controller: IDE > Empty** then click on the disk at the right side of **Optical Drive** and and choose the downloaded **Ubuntu Server image**.
-3. On **Network** > **Adaptor 1** (enp0s3) set:
+1. On **System > Processor**, set **Processor(s)** to 2 CPUs.
+2. On **Storage** > **Storage Devices**, click on  **Controller: IDE > Empty**, then click on the disk at the right side of **Optical Drive** and choose the downloaded **Ubuntu Server image**.
+3. On **Network** > **Adapter 1** (enp0s3) set:
 	1. **Attached to**: NAT
 	2. On **Advanced** click on **Port Forwarding**.
 		1. On **Port Forwarding Rules** set the following rules to access **Kibana** and **SSH** from the host machine.
@@ -125,31 +125,31 @@ On **VirtualBox Manager** select the **Ubuntu Server VN** created and click on *
 </summary>
 <span style="color:grey">
 
-On **VirtualBox Manager** select the **Ubuntu Server VM** and click on **Sart**.
+On **VirtualBox Manager** select the **Ubuntu Server VM** and click on **Start**:
 
-1. Hit enter on **Try or Install Ubuntu Server**.
-2. Select **language**.
+1. Hit Enter on **Try or Install Ubuntu Server**.
+2. Select the **language**.
 3. On **Installer update available**:
 	1. Select **Continue without updating**.
 4. On **Keyboard configuration**:
-	1. Select **Layout** and **Variant** and hit enter on **Done**.
+	1. Select **Layout** and **Variant** and hit Enter on **Done**.
 5. On **Choose type of install**:
-	1. Choose **Ubuntu Server** and hit enter on **Done**.
+	1. Choose **Ubuntu Server** and hit Enter on **Done**.
 6. On **Network connections**:
 	1. `enp0s3 DHCPv4` should be `eth 10.0.2.15/24`.
 	2. `enp0s8 DHCPv4` should be `eth 172.16.1.101/24`.
-	3. Hit enter on **Done**.
-7. On **Configure proxy** just hit enter on **Done**.
-8. On **Configure Ubuntu archive mirror** just hit enter on **Done**.
-9. On **Guided storage configuration** just leave default and hit enter on **Done**.
-10. On **Storage configuration** just hit enter on **Done**.
+	3. Hit Enter on **Done**.
+7. On **Configure proxy** just hit Enter on **Done**.
+8. On **Configure Ubuntu archive mirror** just hit Enter on **Done**.
+9. On **Guided storage configuration** just leave default and hit Enter on **Done**.
+10. On **Storage configuration** just hit Enter on **Done**.
 	1. On the message box **Confirm destructive action** click on **Continue**.
-11. On **Profile setup** fill the fields ant press enter on **Done**.
-12. On **Upgrade to Ubuntu Pro** select **Skip for now** and hit enter on **Continue**.
-13. On **SSH Setup** select **Install OpenSSH server** and hit enter on **Done**.
-14. On **Featured Server Snaps** just press enter on **Done** and the installation will     .
-15. On **Install complete!** hit enter on **Cancel update and reboot**, it will take a while to reboot.
-16. On **Please remove the installation medium** just hit **ENTER** and it will reboot.
+11. On **Profile setup** fill the fields ant press Enter on **Done**.
+12. On **Upgrade to Ubuntu Pro** select **Skip for now** and hit Enter on **Continue**.
+13. On **SSH Setup** select **Install OpenSSH server** and hit Enter on **Done**.
+14. On **Featured Server Snaps** just press Enter on **Done** and the installation will     .
+15. On **Install complete!** hit Enter on **Cancel update and reboot**, it will take a while to reboot.
+16. On **Please remove the installation medium** just hit Enter and it will reboot.
 </span>
 </details>
 
