@@ -6,10 +6,11 @@ This guide provides step-by-step instructions on creating a virtual environment 
 
 ## Outline
 
-1. [VirtualBox Setup](#)
-2. [Virtual Machine Installation](#)
-3. [Elastic Stack 8 Installation](#)
-4. [Security Tests](#)
+1. [VirtualBox Setup](#virtualbox-setup)
+2. [Ubuntu Server Installation](#ubuntu-server-installation)
+3. [Windows 10 Installation](#windows-10-installation)
+3. [Elastic Stack 8 Installation](#elastic-stack-8-installation)
+4. [Security Tests](#s´ecurity-tests)
 
 
 ----------------------------------------------------------------------------------------------------
@@ -332,7 +333,7 @@ On the VM top menu, go to **Machine** > **Take a Snapshot...**, enter the snapsh
 ----------------------------------------------------------------------------------------------------
 
 
-## Elastic Stack Installation
+## Elastic Stack 8 Installation
 
 Elastic Stack is a collection of open-source tools for centralized logging and data analysis. It includes Elasticsearch for search and analytics, Logstash for data processing, Kibana for data visualization, and Beats for data shipping. Together, they provide real-time insights and monitoring capabilities for organizations of all sizes.
 
