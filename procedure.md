@@ -10,7 +10,7 @@ This guide provides step-by-step instructions on creating a virtual environment 
 2. [Ubuntu Server Installation](#ubuntu-server-installation)
 3. [Windows 10 Installation](#windows-10-installation)
 3. [Elastic Stack 8 Installation](#elastic-stack-8-installation)
-4. [Security Tests](#s´ecurity-tests)
+4. [Security Tests](#security-tests)
 
 
 ----------------------------------------------------------------------------------------------------
