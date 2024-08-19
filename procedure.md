@@ -63,7 +63,7 @@ $ VBoxManage list dhcpservers
 
 ## Ubuntu Server Installation
 
-First, download the [Ubuntu Server 22.04.2](https://releases.ubuntu.com/22.04.1/ubuntu-22.04.1-live-server-amd64.iso) installer ISO, then follow the steps below:
+First, download the [Ubuntu Server 22.04.1](https://releases.ubuntu.com/22.04.1/ubuntu-22.04.1-live-server-amd64.iso) installer ISO, then follow the steps below:
 
 <details>
 <summary>
