@@ -9,21 +9,25 @@ This lab aims to explore the detection and visualization capabilities of Elastic
 1. [Procedure](#procedure)
 2. [Diagram](#diagram)
 3. [VirtualBox Internal Network](#virtualbox-internal-network)
-4. [Elastic Stack 8 and Windows Security Setup](#elastic-stack-8-and-windows-security-setup)
-5. [EICAR Malware Test](#eicar-malware-test)
-6. [MITRE ATT&CK Test with Red Team Automation (RTA)](#mitre-attck-test-with-red-team-automation-rta)
+4. [Setup Overview](#setup)
+5. [Security Tests](#sec-tests)
 
 
 ----------------------------------------------------------------------------------------------------
 
 
 ## Procedure
+
 The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md). It was adapted from [Reda BELHAJ](https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack).
 
 ## Diagram
-<img src="images/elastic_diagram.png" title="Diagram"/>
+
+<div align="center">
+<img src="images/elastic_diagram.png" width="60%"/>
+</div>
 
 ## VirtualBox Internal Network
+
 The image below displays the VirtualBox Internal Network named intnet1. In this type of virtual network, the virtual machines can only communicate with each other.
 
 <img src="images/intnet1.png" title="IP Addresses"/>
@@ -38,9 +42,8 @@ Below is an image showing the IP addresses of the Ubuntu Server VM (left) and th
 ----------------------------------------------------------------------------------------------------
 
 
-<h1 align="center">Setup Overview</h1>
+<h1 align="center" id="setup">Setup Overview</h1>
 
-## Elastic Stack 8 and Windows Security Setup
 This section provides an overview of Elastic Stack 8, detailing the created policies and the integrations utilized in each policy. Additionally, it discusses the Windows Security setup employed in this lab.
 
 <details>
@@ -55,15 +58,15 @@ At the core of the Elastic Stack 8 comprises Elasticsearch, the robust data engi
 - **Elastic Agent** is a unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. 
 - **Integrations** are part of the agent's policy to collect data sources such as logs and metrics, to provide security protections, and more. Agent's policy can be updated to add or remove integrations. Elastic Integrations are powered by Elastic Agent.
   
-<p align="center">
-  <img src="images/1/1-elastic-stack.png" width="470" title="Elastic Stack"/>
-</p>
+<div align="center">
+<img src="images/1/1-elastic-stack.png" width="470" title="Elastic Stack"/>
+</div>
 </span>
 </details>
 
 <details>
 <summary>
-<h3>1.2 - Fleet and Elastic Agents</h3>
+<h3>1.2 - Fleet Server and Elastic Agents</h3>
 </summary>
 <span style="color:gray">
 
@@ -72,26 +75,14 @@ Fleet provides a web-based UI in Kibana for centrally managing Elastic Agents an
 All communication between the Fleet UI and Fleet Server happens through Elasticsearch. Fleet writes policies, actions, and any changes to the `fleet-*` indices in Elasticsearch. Each Fleet Server monitors the indices, picks up changes, and ships them to the Elastic Agents. To communicate to the Fleet about the status of the Elastic Agents and the policy rollout, the Fleet Servers write updates to the `fleet-*` indices.
 
 <img src="images/1/2-fleet_agents.png" title="Fleet Agents"/>
-</span>
-</details>
 
-<details>
-<summary>
-<h3>1.3 - Fleet Server Policy</h3>
-</summary>
-<span style="color:gray">
+### 1.2.1 - Fleet Server Policy
 
 The Fleet Server was installed on the Ubuntu Server (Elastic Host), and its policy incorporates the Fleet Server integration. The System integration was included automatically with the Fleet Server integration but was removed from the Fleet Server policy. The System integration is utilized for shipping log and metric files to the Elastic Host. It can be retained if one desires to collect logs and metrics for monitoring the host operating as the Fleet Server.
 
 <img src="images/1/3-fleet_server_policy.png" title="Fleet Server Policy"/>
-</span>
-</details>
 
-<details>
-<summary>
-<h3>1.3.1 - Fleet Server Integration</h3>
-</summary>
-<span style="color:gray">
+### 1.2.2 - Fleet Server Integration
 
 The Fleet Server is what connects Elastic Agents to Fleet. Here are some key characteristics:
 - It can support an extensive infrastructure and handle numerous Elastic Agent connections.
@@ -115,14 +106,8 @@ The Windows Endpoint Policy comprises the Elastic Defend, System, and Windows in
 - Windows will collect the event viewer logs.
 
 <img src="images/1/4-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
-</span>
-</details>
 
-<details>
-<summary>
-<h3>1.4.1 - System Integration</h3>
-</summary>
-<span style="color:gray">
+### 1.4.1 - System Integration
 
 The System integration allows for monitoring servers, personal computers, and other devices. This integration collects metrics (state) and logs (events) from the devices. The data collected can be visualized in Kibana. Alerts can be created to notify if something goes wrong, and data can be referenced when troubleshooting an issue.
 
@@ -136,14 +121,8 @@ The System integration collects two types of data: logs and metrics.
 In this configuration, only logs were collected.
 
 <img src="images/1/4.1-system_integration.png" title="System Integration"/>
-</span>
-</details>
 
-<details>
-<summary>
-<h3>1.4.2 - Winows Integration</h3>
-</summary>
-<span style="color:gray">
+### 1.4.2 - Winows Integration
 
 The Windows integration allows monitoring of the Windows OS, services, applications, and more. The Windows integration collects metrics (state) and logs (events) from the machine. These data can be visualized in Kibana, alerts to notify if something goes wrong can be created, and data can be referenced when troubleshooting an issue.
 
@@ -158,14 +137,8 @@ The Windows integration collects two types of data: logs and metrics.
 In this configuration, only logs were collected.
 
 <img src="images/1/4.2-windows_integration.png" title="Windows Integration"/>
-</span>
-</details>
 
-<details>
-<summary>
-<h3>1.4.3 - Elastic Defend Integration</h3>
-</summary>
-<span style="color:gray">
+### 1.4.3 - Elastic Defend Integration
 
 The Elastic Defend integration provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on traditional endpoints and public cloud environments. In this setup, Elastic Defend Malware protection was used for threat detection.
 
@@ -189,12 +162,12 @@ Malware protection was activated in Detect mode, and Elastic Security Antivirus 
 
 The tests were performed with the Elastic Security Antivirus active and the SmartScreen for Microsoft Edge turned off.
 
-#### 1.5.1 - Elastic Security Antivirus
+### 1.5.1 - Elastic Security Antivirus
 The Elastic Security Antivirus, integrated with Elastic Defender, was employed instead of Microsoft Defender Antivirus. Alternatively, Microsoft Defender Antivirus can be used for testing, with Real-time protection disabled, to be able to save on disk the malicious files.
 
 <img src="images/1/5.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
 
-#### 1.5.2 - Microsoft Defender SmartScreen
+### 1.5.2 - Microsoft Defender SmartScreen
 The SmartScreen for Microsoft Edge was turned off, enabling to download the malicious files in the EICAR Malware Test.
 
 <img src="images/1/5.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
@@ -205,7 +178,7 @@ The SmartScreen for Microsoft Edge was turned off, enabling to download the mali
 ----------------------------------------------------------------------------------------------------
 
 
-<h1 align="center">Security Tests</h1>
+<h1 align="center" id="sec-tests">Security Tests</h1>
 
 
 ## EICAR Malware Test
