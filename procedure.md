@@ -6,7 +6,7 @@ This guide provides step-by-step instructions on creating a virtual environment 
 
 ## Outline
 
-1. [VirtualBox Setup](#virtualbox-setup)
+1. [VirtualBox Set Up](#virtualbox-set-up)
 2. [Ubuntu Server Installation](#ubuntu-server-installation)
 3. [Windows 10 Installation](#windows-10-installation)
 3. [Elastic Stack 8 Installation](#elastic-stack-8-installation)
@@ -18,11 +18,11 @@ This guide provides step-by-step instructions on creating a virtual environment 
 
 <h1 align="center">Virtual Environment Set Up</h1>
 
-## VirtualBox Setup
+## VirtualBox Set Up
 
 VirtualBox is a free and open-source virtualization software that allows users to run multiple operating systems on a single machine. It provides a platform for testing, development, and running applications in isolated environments.
 
-To install VirtualBox, follow the instructions on [VirtualBox Webpage](https://www.virtualbox.org/wiki/Downloads) according to your system.
+To install VirtualBox, follow the instructions on the [VirtualBox Webpage](https://www.virtualbox.org/wiki/Downloads) according to your system.
 
 <details>
 <summary>
@@ -30,22 +30,27 @@ To install VirtualBox, follow the instructions on [VirtualBox Webpage](https://w
 </summary>
 <span style="color:gray">
 
-In this lab, We will configure on VirtualBox a virtual network with the following components and respective IP addresses:
+In this lab, we will be setting up an internal network on VirtualBox using the components listed below, each with its respective IP address. The virtual machines will be configured to access the internet through the NAT adapter.
 
 - **Virtual Switch** (intnet1) - 172.16.1.0/24
     - **Virtual DHCP Server** - 172.16.1.100
     - **Ubuntu Server VM** (Elastic Host)
-        - Adapter 1: NAT - 10.0.2.15
-        - Adapter 2: Internal Network (intnet1) - 172.16.1.101
+        - **Adapter 1:** NAT - 10.0.2.15
+        - **Adapter 2:** Internal Network (intnet1) - 172.16.1.101
     - **Windows 10 VM** (Victim)
-        - Adapter 1: NAT - 10.0.2.15
-        - Adapter 2: Internal Network (intnet1) - 172.16.1.102
+        - **Adapter 1:** NAT - 10.0.2.15
+        - **Adapter 2:** Internal Network (intnet1) - 172.16.1.102
+
+**Internal Network:** An internal network on VirtualBox is a private network that allows virtual machines to communicate with each other, but not with the host machine or external networks. This provides a secure environment for testing and development purposes without exposing the virtual machines to outside threats.
+
+**NAT Adapter:** The NAT (Network Address Translation) adapter on VirtualBox allows each virtual machine to have its own isolated network with access only to the host machine and the internet, but no communication with other virtual machines.
+
 </span>
 </details>
 
 <details>
 <summary>
-<h3>Create an Internal Virtual Network with DHCP Server on VirtualBox</h3>
+<h3>Internal Network with DHCP Server Configuration</h3>
 </summary>
 <span style="color:gray">
 
