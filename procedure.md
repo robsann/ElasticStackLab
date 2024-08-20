@@ -15,6 +15,7 @@ This guide provides step-by-step instructions on creating a virtual environment 
 
 ----------------------------------------------------------------------------------------------------
 
+<h1 align="center">Virtual Environment Set Up</h1>
 
 ## VirtualBox Setup
 
@@ -43,7 +44,7 @@ In this lab, We will configure on VirtualBox a virtual network with the followin
 
 <details>
 <summary>
-<h3>Create an Internal Virtual Network with DHCP Server on VitualBox</h3>
+<h3>Create an Internal Virtual Network with DHCP Server on VirtualBox</h3>
 </summary>
 <span style="color:gray">
 
@@ -61,6 +62,8 @@ $ VBoxManage list dhcpservers
 
 ----------------------------------------------------------------------------------------------------
 
+
+<h1 align="center">Virtual Machine Installation</h1>
 
 ## Ubuntu Server Installation
 
@@ -100,7 +103,7 @@ On **VirtualBox Manager** click on **New**:
 On **VirtualBox Manager** select the **Ubuntu Server VM** created and click on **Settings**:
 
 1. On **System > Processor**, set **Processor(s)** to 2 CPUs.
-2. On **Storage** > **Storage Devices**, click on  **Controller: IDE > Empty**, then click on the disk at the right side of **Optical Drive** and choose the downloaded **Ubuntu Server image**.
+2. On **Storage** > **Storage Devices**, click on  **Controller: IDE > Empty**, then click on the disk on the right side of **Optical Drive** and choose the downloaded **Ubuntu Server image**.
 3. On **Network** > **Adapter 1** (enp0s3) set:
 	1. **Attached to**: NAT
 	2. On **Advanced** click on **Port Forwarding**.
@@ -111,7 +114,7 @@ On **VirtualBox Manager** select the **Ubuntu Server VM** created and click on *
 		SSH             TCP       127.0.0.1   10022       10.0.2.15   22
 		```
 		- Using **Port Forwarding** the connections to **HostIP:HostPort** are redirected to **GuestIP:GuestPort**.
-		2. Click **Ok**.
+		2. Click **OK**.
 4. On **Network > Adapter 2** (enp0s8) set:
 	1. **Attached to**: Internal Network
 	2. **Name**: intnet1
@@ -147,9 +150,9 @@ On **VirtualBox Manager** select the **Ubuntu Server VM** and click on **Start**
 11. On **Profile setup** fill the fields ant press Enter on **Done**.
 12. On **Upgrade to Ubuntu Pro** select **Skip for now** and hit Enter on **Continue**.
 13. On **SSH Setup** select **Install OpenSSH server** and hit Enter on **Done**.
-14. On **Featured Server Snaps** just press Enter on **Done** and the installation will     .
-15. On **Install complete!** hit Enter on **Cancel update and reboot**, it will take a while to reboot.
-16. On **Please remove the installation medium** just hit Enter and it will reboot.
+14. On **Featured Server Snaps**, just press Enter on **Done** and the installation will start.
+15. When **Install complete!** appears on the screen, hit Enter on **Cancel update and reboot**, it will take a while to reboot.
+16. On, **Please remove the installation medium**, just hit Enter and it will reboot.
 </span>
 </details>
 
@@ -205,13 +208,11 @@ After rebooting **log in** with your credentials.
 	```
 	$ ssh -oHostKeyAlgorithms=+rsa-sha2-512 -p 10022 user@127.0.0.1
 	```
-where `-p 10022` is the port set in port forwarding, `user` is the username, and `127.0.0.1` is the localhost (loopback) address. The `-oHostKeyAlgorithms` flag is necessary if the `rsa-sha2-515` algorithm name is not set in the `HostKeyAlgorithms` parameter of the `.ssh/config` file. This will be useful for copying and pasting.
+Where `-p 10022` is the port set in port forwarding, `user` is the username, and `127.0.0.1` is the localhost (loopback) address. The `-oHostKeyAlgorithms` flag is necessary if the `rsa-sha2-515` algorithm name is not set in the `HostKeyAlgorithms` parameter of the `.ssh/config` file. This will be useful for copying and pasting.
 </span>
 </details>
 
-
-----------------------------------------------------------------------------------------------------
-
+<br>
 
 ## Windows 10 Installation
 
@@ -253,7 +254,7 @@ On **VirtualBox Manager** select the **Windows 10 VN** created and click on **Se
 	2. **Drag'n'Drop**: Bidirectional
 2. Go to **System > Processor > Processor(s)**: 2 CPU
 3. Go to **Display > Screen > Video Memory**: 128 MB
-4. On **Storage** on **Storage Devices** click on  **Controller: IDE > Empty** then click on the disk at the right side of **Optical Drive** and and choose the downloaded **Windows 10 image**.
+4. On **Storage** at **Storage Devices**, click on  **Controller: IDE > Empty**, then click on the disk on the right side of **Optical Drive** and choose the downloaded **Windows 10 image**.
 5. Go to **Network**:
 	1. **Adapter 1**:
 		1. **Attached to**: NAT
@@ -270,7 +271,7 @@ On **VirtualBox Manager** select the **Windows 10 VN** created and click on **Se
 </summary>
 <span style="color:grey">
 
-On **VirtualBox Manager** select the **Windows 10 VM** and click on **Sart**.
+On **VirtualBox Manager**, select the **Windows 10 VM** and click on **Start**.
 
 1. Set **preferences** and click **Next**.
 2. Click **Install now**.
@@ -293,7 +294,7 @@ On **VirtualBox Manager** select the **Windows 10 VM** and click on **Sart**.
 	1. click on **Devices > Insert Guest Additions CD Image**.
 	2. On Windows Explorer, go to the CD drive and execute **VBoxWindowsAdditions-amd64**.
 2. Enabling **PowerShell Script Block Logging**:
-PowerShell script block logging captures abnormal PowerShell behavior and produces an audit trail of executed code.
+PowerShell script block logging captures abnormal PowerShell behaviour and produces an audit trail of executed code.
     1. Via **Local Group Policy Editor**:
         1. Go to **Local Group Policy Editor** (**Edit group policy** on search).
         2. Go to **Computer Configuration > Administrative Templates > Windows Components > Windows PowerShell**
@@ -312,7 +313,7 @@ PowerShell script block logging captures abnormal PowerShell behavior and produc
 3. Installing Sysmon:
     1. Download [Microsoft Sysmon](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon).
     2. Download the [Sysmon configuration file](https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml) for Endpoint Collection.
-    3. Install sysmon:
+    3. Install Sysmon:
         ```
         PS> .\Sysmon64.exe -accepteula -i sysmonconfig-export.xml
         ```
@@ -331,6 +332,9 @@ On the VM top menu, go to **Machine** > **Take a Snapshot...**, enter the snapsh
 
 
 ----------------------------------------------------------------------------------------------------
+
+
+<h1 align="center">Virtual Machine Configuration</h1>
 
 
 ## Elastic Stack 8 Installation
@@ -358,22 +362,22 @@ Elasticsearch is the distributed search and analytics engine at the heart of the
     ```
     $ sudo apt update
     ```
-4. Install elasticsearch using apt:
+4. Install Elasticsearch using apt:
     ```
     $ sudo apt install elasticsearch
     ```
 - Save the **Security autoconfiguration information** that is at the end of the output of the installation for use later.
-5. Start and enable elasticsearch:
+5. Start and enable Elasticsearch:
     ```
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable elasticsearch.service
     $ sudo systemctl start elasticsearch.service
     ```
-6. Use the command below provided by the **elasticsearch installation output** to **reset the password** of the **elastic** user:
+6. Use the command below provided by the **Elasticsearch installation output** to **reset the password** of the **elastic** user:
     ```
     $ sudo /usr/share/elasticsearch/bin/elasticsearch-reset-password -i -u elastic
     ```
-7. Test the elasticsearch server using cURL:
+7. Test the Elasticsearch server using cURL:
     1. The cURL command below will output an **Empty reply from server**.
         ```
         $ curl localhost:9200
@@ -398,18 +402,18 @@ Elasticsearch is the distributed search and analytics engine at the heart of the
 Kibana enables you to give shape to your data and navigate the Elastic Stack. With Kibana, you can:
 
 - Search, observe, and protect your data.
-- Analyze your data.
+- Analyse your data.
 - Manage, monitor, and secure the Elastic Stack.
 
 1. Install Kibana using apt:
     ```
     $ sudo apt install kibana
     ```
-2. Generate the **enrollment token for Kibana instances** with the command provided by the **elasticsearch installation output**:
+2. Generate the **enrolment token for Kibana instances** with the command provided by the **Elasticsearch installation output**:
     ```
     $ sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
     ```
-3. Run the **Kibana setup** and enter the **enrollment token for Kibana**:
+3. Run the **Kibana setup** and enter the **enrolment token for Kibana**:
     ```
     $ sudo /usr/share/kibana/bin/kibana-setup
     ```
@@ -437,7 +441,7 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
         xpack.reporting.encryptionKey: <key>>
         xpack.security.encryptionKey: <key>
     ```
-7. Start and enable kibana:
+7. Start and enable Kibana:
     ```
     $ sudo systemctl start kibana.service
     $ sudo systemctl enable kibana.service
@@ -472,7 +476,7 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
                 2. Click on **Save and continue**.
             2. Click on **Add Elastic Agent to your hosts**.
 4. **Add Fleet Server**
-    - On **Enroll in Fleet** tab:
+    - On **Enrol in Fleet** tab:
     1. **Select a policy for Fleet Server**
         1. Select **Fleet Server policy**.
     2. **Choose a deployment mode for security**
@@ -506,8 +510,8 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
 6. **Add agent**
     1. **What type of host are you adding?**
         1. Type **Windows Endpoint policy** and click on **Create policy**.
-    2. **Enroll in Fleet?**
-        1. Select **Enroll in Fleet (recommended)**.
+    2. **Enrol in Fleet?**
+        1. Select **Enrol in Fleet (recommended)**.
     3. **Install Elastic Agent on your host**
         1. Copy the commands under the **Windows** tab, on the `.\elastic-agent.exe` command check if `--url=https://172.16.1.101:8220` and add `--insecure` at the end of the command, then run these commands on PowerShell as Administrator on the Windows 10 VM.
             ```
@@ -517,9 +521,9 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
             PS> cd elastic-agent-8.8.2-windows-x86_64
             PS> .\elastic-agent.exe install --url=https://172.16.1.101:8220 --enrollment-token=<token> --insecure
             ```
-    4. **Agent enrollment confirmed**
+    4. **Agent enrolment confirmed**
         1. Click on **View enrolled agents**.
-- **NOTE**: After restarting the Ubuntu Server and accessing Kibana again, the Fleet Server will appear offline and you will have to restart it using the following command:
+- **NOTE**: After restarting the Ubuntu Server and accessing Kibana again, the Fleet Server will appear offline, and you will have to restart it using the following command:
     ```
     $ sudo elastic-agent restart
     ```
@@ -535,15 +539,15 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
 #### System Integration
 
 - It is automatically added with the **Fleet Server integration**.
-- On **Windows** collect **Application**, **Security**, and **System** logs from **Windows Logs**.
-- On **Linux** collect **auth** logs on **/var/log/auth.log** and **syslog** logs from **/var/log/syslog**.
+- On **Windows**, collect **Application**, **Security**, and **System** logs from **Windows Logs**.
+- On **Linux**, collect **auth** logs on **/var/log/auth.log** and **syslog** logs from **/var/log/syslog**.
 
 #### Windows Integration
 
 - Collect **Windows events** from **ForwardedEvents**, **PowerShell**, **PowerShell Operational**, and **Sysmon Operational** channel logs.
 - Collect **Windows perfmon and service metrics**.
 1. Go to **Integrations**, search for **windows** and click on **Windows**.
-    1. On **Windows** click on **Add Windows**.
+    1. On **Windows**, click on **Add Windows**.
         1. **Configure integration**
             1. **Integration name**: windows-1
         2. **Where to add this integration?**
@@ -555,7 +559,7 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
 #### Elastic Defend Integration
 
 1. Go to **Integrations**, search for **security** and click on **Elastic Defend**.
-    1. On **Elastic Defend** click on **Add Elastic Defend**.
+    1. On **Elastic Defend**, click on **Add Elastic Defend**.
         1. **Configure integration**
             1. **Integration name**: endpoint_security-1
             2. Select **Complete EDR (Endpoint Detection & Response)**
@@ -575,21 +579,21 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
             3. Turn ON **Blocklist enabled**.
         2. on **Policy settings > Settings**:
             1. You can **disable event collection** for **Mac** and **Linux**.
-            2. Turn ON **Regiter as antivirus**.
+            2. Turn ON **Register as antivirus**.
         3. Click on **Save integration**.
         4. Click on **Save and deploy changes**.
     2. Click on **system-2** to edit.
         1. Turn OFF **Collect logs from System instances**.
-        2. Keep ON **Collect events from the Windows event log**.
-        3. Keep ON **Collect metrics from System instances**.
+        2. Keep ON the **Collect events from the Windows event log** option.
+        3. Keep ON the **Collect metrics from System instances** option.
         4. Click on **Save integration**.
         5. Click on **Save and deploy changes**.
 
 #### Rules
 
 1. Go to **Security > Manage** and click on **Rules**.
-2. For the **EICAR Malware Test** enable only the **Endpoint Security** rule. If its **last response** is showing **Warning**, it's because no data in the `logs-endpoint.alerts-*` index has been generated yet.
-3. For the **MITRE ATT&CK Test with RTA** enable all the rules and disable the following rules:
+2. For the **EICAR Malware Test**, enable only the **Endpoint Security** rule. If its **last response** is showing **Warning**, it's because no data in the `logs-endpoint.alerts-*` index has been generated yet.
+3. For the **MITRE ATT&CK Test with RTA**, enable all the rules and disable the following rules:
     1. **My First Rule** rule.
     2. **Multiple Alerts Involving a User** rule.
     3. **Multiple Alerts in Different ATT&CK Tactics on a Single Host** rule.
@@ -601,9 +605,8 @@ Kibana enables you to give shape to your data and navigate the Elastic Stack. Wi
 ----------------------------------------------------------------------------------------------------
 
 
-## Security Tests
+<h1 align="center">Security Tests</h1>
 
-The tests below will be performed:
 
 ### EICAR Malware Test
 
@@ -618,19 +621,19 @@ The EICAR Malware test is a harmless file created to test antivirus software. It
 1. If not using **Elastic Security antivirus**, disable **Windows Security > Virus & threat protection settings > Real-time protection**.
 2. Go to **EICAR Anti Malware Testfile website** to download the test files:
   1. Go to https://www.eicar.org/download-anti-malware-testfile/
-  2. Click on **More information** then **Continue to the unsafe site (not recommended**.
+  2. Click on **More information**, then on **Continue to the unsafe site (not recommended**.
   3. Download the `eicar.com`, `eicar.com.txt`, `eicar_com.zip`, and `eicarcom2.zip` test files.
 3. Extract the files `eicar_com.zip` and `eicarcom2.zip`.
-4. In Kibana **Security > Alerts** the actions performed will be detected as Malware.
+4. In Kibana **Security > Alerts**, the actions performed will be detected as Malware.
     - During the downloading of the `eicar.com` and `eicar.com.txt` files it should generate three signals for each file: for the `.tmp`, `.crdownload`, and `eicar.com`/`eicar.com.txt` files.
     - The `eicar_com.zip` and `eicarcom2.zip` files will generate a signal only during the extraction of the `eicar.com` file.
-    - Not always are all the signals captured by Elastic Defend.
+    - Not are always all the signals captured by Elastic Defend.
 </span>
 </details>
 
 ### MITRE ATT&CK Test with Red Team Automation (RTA)
 
-MITRE ATT&CK Test with Red Team Automation (RTA) is a framework that allows organizations to simulate real-world cyber attacks using automated tools and techniques. It helps organizations identify weaknesses in their security defenses and improve their overall security posture.
+MITRE ATT&CK Test with Red Team Automation (RTA) is a framework that allows organizations to simulate real-world cyberattacks using automated tools and techniques. It helps organizations identify weaknesses in their security defences and improve their overall security posture.
 
 <details>
 <summary>
@@ -640,12 +643,12 @@ MITRE ATT&CK Test with Red Team Automation (RTA) is a framework that allows orga
 
 1. Install [Python 2](https://www.python.org/downloads/release/python-2718/) on Windows.
     1. Add python.exe to Path.
-2. Download the [MITTRE ATT&CK Red Team Automation (RTA) project](https://github.com/endgameinc/RTA/archive/master.zip) and extract `RTA-master` to `C:\`.
+2. Download the [MITRE ATT&CK Red Team Automation (RTA) project](https://github.com/endgameinc/RTA/archive/master.zip) and extract `RTA-master` to `C:\`.
 4. Run the RTA:
     ```
     PS> python.exe C:\RTA-master\run_all.py
     ```
-5. Within a few minutes several signals will appear on the Detections page of Kibana.
+5. Within a few minutes, several signals will appear on the Detections page of Kibana.
 </span>
 </details>
 
