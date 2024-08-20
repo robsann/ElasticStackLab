@@ -1,27 +1,21 @@
 # Threat Hunting with Elastic Stack 8 (XDR)
+
 <div align="justify">
+
 This lab aims to explore the detection and visualization capabilities of Elastic Stack 8 (XDR) by conducting malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was set up to provide IP addresses for an internal network with two virtual machines: an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have dual network adapters, one linked to a NAT with internet access and the other to the internal network. Elastic Stack 8 was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. Data was gathered from the victim's machine using the Elastic Agent.
 
-## Summary
-- Set up an Internal Network in VirtualBox, including:
-  - DHCP Server
-  - Ubuntu Server VM (Elastic Host)
-  - Windows 10 VM (Victim)
-- Installed Elastic Stack 8 on the Ubuntu Server, comprising:
-  - Elasticsearch and Kibana (UI).
-  - Elastic Agent with various Integrations: Fleet Server, System, Windows, and Elastic Defend.
-- Conducted two simulated malicious tests:
-  - EICAR Malware Test.
-  - MITRE ATT&CK Test using Red Team Automation (RTA).
+## Outline
 
-## Tools
-- **Kali Linux (Host)**
-  - **VirtualBox**
-    - **Ubuntu Server (VM)**
-      - **Elastic Stack 8**
-    - **Windows 10 (VM)**
-      - **EICAR Malware Test**
-      - **MITRE ATT&CK Test with RTA**
+1. [Procedure](#)
+2. [Diagram](#)
+3. [VirtualBox Internal Network](#)
+4. [Elastic Stack 8 and Windows Security Setup](#)
+5. [EICAR Malware Test](#)
+6. [MITRE ATT&CK Test with Red Team Automation (RTA)](#)
+
+
+----------------------------------------------------------------------------------------------------
+
 
 ## Procedure
 The procedure to build this lab can be found [here](https://github.com/robsann/ElasticStackLab/blob/main/procedure.md). It was adapted from [Reda BELHAJ](https://unencrypted.vercel.app/blog/threat-hunting-with-elasticstack).
@@ -40,13 +34,21 @@ Below is an image showing the IP addresses of the Ubuntu Server VM (left) and th
 
 <img src="images/ip_addresses.png" title="IP Addresses"/>
 
-<br/><br/>
-# Setup Overview and Tests
+
+----------------------------------------------------------------------------------------------------
+
+
+<h1 align="center">Setup Overview</h1>
 
 ## 1 - Elastic Stack 8 and Windows Security Setup
 This section provides an overview of Elastic Stack 8, detailing the created policies and the integrations utilized in each policy. Additionally, it discusses the Windows Security setup employed in this lab.
 
-### 1.1 - Elastic Stack 8
+<details>
+<summary>
+<h3>1.1 - Elastic Stack 8</h3>
+</summary>
+<span style="color:gray">
+
 At the core of the Elastic Stack 8 comprises Elasticsearch, the robust data engine, and Kibana, the intuitive user interface. Additionally, Elastic Agent and Integrations are employed to ship data from endpoints.
 - **Elasticsearch** is the distributed search and analytics engine at the heart of the Elastic Stack. Elasticsearch is where the indexing, search, and analysis happen.
 - **Kibana** enables the user interface to navigate the Elastic Stack. With Kibana you can: Search, observe, and protect your data; Analyze your data; Manage, monitor, and secure the Elastic Stack.
@@ -56,20 +58,41 @@ At the core of the Elastic Stack 8 comprises Elasticsearch, the robust data engi
 <p align="center">
   <img src="images/1/1-elastic-stack.png" width="470" title="Elastic Stack"/>
 </p>
+</span>
+</details>
 
-### 1.2 - Fleet and Elastic Agents
+<details>
+<summary>
+<h3>1.2 - Fleet and Elastic Agents</h3>
+</summary>
+<span style="color:gray">
+
 Fleet provides a web-based UI in Kibana for centrally managing Elastic Agents and their policies. Fleet serves as the communication channel back to the Elastic Agents. Agents check in for the latest updates regularly. When an agent policy is changed, all the agents receive the update during their next check-in. To upgrade the Elastic Agent binaries or integrations, the upgrades can be initiated in Fleet, and the Elastic Agents running on the hosts will upgrade automatically.
 
 All communication between the Fleet UI and Fleet Server happens through Elasticsearch. Fleet writes policies, actions, and any changes to the `fleet-*` indices in Elasticsearch. Each Fleet Server monitors the indices, picks up changes, and ships them to the Elastic Agents. To communicate to the Fleet about the status of the Elastic Agents and the policy rollout, the Fleet Servers write updates to the `fleet-*` indices.
 
 <img src="images/1/2-fleet_agents.png" title="Fleet Agents"/>
+</span>
+</details>
 
-### 1.3 - Fleet Server Policy
+<details>
+<summary>
+<h3>1.3 - Fleet Server Policy</h3>
+</summary>
+<span style="color:gray">
+
 The Fleet Server was installed on the Ubuntu Server (Elastic Host), and its policy incorporates the Fleet Server integration. The System integration was included automatically with the Fleet Server integration but was removed from the Fleet Server policy. The System integration is utilized for shipping log and metric files to the Elastic Host. It can be retained if one desires to collect logs and metrics for monitoring the host operating as the Fleet Server.
 
 <img src="images/1/3-fleet_server_policy.png" title="Fleet Server Policy"/>
+</span>
+</details>
 
-#### 1.3.1 - Fleet Server Integration
+<details>
+<summary>
+<h3>1.3.1 - Fleet Server Integration</h3>
+</summary>
+<span style="color:gray">
+
 The Fleet Server is what connects Elastic Agents to Fleet. Here are some key characteristics:
 - It can support an extensive infrastructure and handle numerous Elastic Agent connections.
 - It is available for both Elastic Cloud and self-managed clusters.
@@ -77,16 +100,30 @@ The Fleet Server is what connects Elastic Agents to Fleet. Here are some key cha
 - Its responsibilities include updating agent policies, gathering status information, and coordinating actions across Elastic Agents.
 
 <img src="images/1/3.1-fleet_server_integration.png" title="Fleet Server Integration"/>
+</span>
+</details>
 
-### 1.4 - Windows Endpoint Policy
+<details>
+<summary>
+<h3>1.4 - Windows Endpoint Policy</h3>
+</summary>
+<span style="color:gray">
+
 The Windows Endpoint Policy comprises the Elastic Defend, System, and Windows integrations.
 - Elastic Defend will be used as an anti-virus.
 - The system will collect the logs and metrics.
 - Windows will collect the event viewer logs.
 
 <img src="images/1/4-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
+</span>
+</details>
 
-#### 1.4.1 - System Integration
+<details>
+<summary>
+<h3>1.4.1 - System Integration</h3>
+</summary>
+<span style="color:gray">
+
 The System integration allows for monitoring servers, personal computers, and other devices. This integration collects metrics (state) and logs (events) from the devices. The data collected can be visualized in Kibana. Alerts can be created to notify if something goes wrong, and data can be referenced when troubleshooting an issue.
 
 The System integration collects two types of data: logs and metrics.
@@ -99,8 +136,15 @@ The System integration collects two types of data: logs and metrics.
 In this configuration, only logs were collected.
 
 <img src="images/1/4.1-system_integration.png" title="System Integration"/>
+</span>
+</details>
 
-#### 1.4.2 - Winows Integration
+<details>
+<summary>
+<h3>1.4.2 - Winows Integration</h3>
+</summary>
+<span style="color:gray">
+
 The Windows integration allows monitoring of the Windows OS, services, applications, and more. The Windows integration collects metrics (state) and logs (events) from the machine. These data can be visualized in Kibana, alerts to notify if something goes wrong can be created, and data can be referenced when troubleshooting an issue.
 
 The Windows integration collects two types of data: logs and metrics.
@@ -114,8 +158,15 @@ The Windows integration collects two types of data: logs and metrics.
 In this configuration, only logs were collected.
 
 <img src="images/1/4.2-windows_integration.png" title="Windows Integration"/>
+</span>
+</details>
 
-#### 1.4.3 - Elastic Defend Integration
+<details>
+<summary>
+<h3>1.4.3 - Elastic Defend Integration</h3>
+</summary>
+<span style="color:gray">
+
 The Elastic Defend integration provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on traditional endpoints and public cloud environments. In this setup, Elastic Defend Malware protection was used for threat detection.
 
 The Elastic Defend integration collects two types of data: logs and metrics.
@@ -127,8 +178,15 @@ The Elastic Defend integration collects two types of data: logs and metrics.
 Malware protection was activated in Detect mode, and Elastic Security Antivirus was designated as the official antivirus solution for the Windows 10 virtual machine, automatically deactivating Windows Defender Antivirus.
 
 <img src="images/1/4.3-elastic_defend_integration.png" title="Elastic Defend Integration"/>
+</span>
+</details>
 
-### 1.5 - Windows Security
+<details>
+<summary>
+<h3>1.5 - Windows Security</h3>
+</summary>
+<span style="color:gray">
+
 The tests were performed with the Elastic Security Antivirus active and the SmartScreen for Microsoft Edge turned off.
 
 #### 1.5.1 - Elastic Security Antivirus
@@ -140,10 +198,20 @@ The Elastic Security Antivirus, integrated with Elastic Defender, was employed i
 The SmartScreen for Microsoft Edge was turned off, enabling to download the malicious files in the EICAR Malware Test.
 
 <img src="images/1/5.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
+</span>
+</details>
 
----
 
-## 2 - EICAR Malware Test
+----------------------------------------------------------------------------------------------------
+
+
+<h1 align="center">Security Tests</h1>
+
+<details>
+<summary>
+<h3>2 - EICAR Malware Test</h3>
+</summary>
+<span style="color:gray">
 
 The EICAR Ant-Virus Test File or EICAR test file is a computer file that was developed by the European Institute for Computer Antivirus Research (EICAR) and the Computer Antivirus Research Organization (CARO) to test the response of computer antivirus (AV) programs.
 
@@ -180,10 +248,17 @@ On the `Security > Dashboards > Overview` page, apply the filter `message: "Malw
 In the `Security > Alerts` section, there are 7 alerts (signal events) displayed. These alerts were triggered by the Malware Detection Alert rule. Among these, there are four creation events for individual files and three rename events for `eicar.com.crdownload`, `eicar.com`, and `eicar.com.txt`.
 
 <img src="images/2/2.4-elastic_security_alerts.png" title="Security Alerts"/>
+</span>
+</details>
 
----
+<br>
 
-## 3 - MITRE ATT&CK Test with Red Team Automation (RTA)
+<details>
+<summary>
+<h3>3 - MITRE ATT&CK Test with Red Team Automation (RTA)</h3>
+</summary>
+<span style="color:gray">
+
 RTA offers a framework of scripts created to enable blue teams to assess their detection capabilities against malicious tradecraft. This framework is inspired by MITRE ATT&CK and designed for comprehensive testing.
 RTA is composed of Python scripts that generate evidence of over 50 different ATT&CK tactics, as well as a compiled binary application that performs activities such as file time-stopping, process injections, and beacon simulation as needed.
 
@@ -222,5 +297,8 @@ Table listing 45 detection rules, including their ID and name for the associated
 The table below presents the commands executed in the process, along with the parent process, for each activated rule in the test. It also displays the username associated with each command, as well as the event action and severity.
 
 <img src="images/3/3.2-processes_per_rule.png" title="Processes per Rule"/>
+</span>
+</details>
+
 
 </div>
