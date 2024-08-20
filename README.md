@@ -11,7 +11,7 @@ This lab aims to explore the detection and visualization capabilities of Elastic
 3. [VirtualBox Internal Network](#virtualbox-internal-network)
 4. [Elastic Stack 8 and Windows Security Setup](#elastic-stack-8-and-windows-security-setup)
 5. [EICAR Malware Test](#eicar-malware-test)
-6. [MITRE ATT&CK Test with Red Team Automation (RTA)](#mitre-attck-rest-with-red-ream-automation-rta))
+6. [MITRE ATT&CK Test with Red Team Automation (RTA)](#mitre-attck-test-with-red-team-automation-rta)
 
 
 ----------------------------------------------------------------------------------------------------
