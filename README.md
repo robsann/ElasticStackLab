@@ -1,6 +1,6 @@
-# Threat Hunting with Elastic Stack 8 (XDR)
-
 <div align="justify">
+
+# Threat Hunting with Elastic Stack 8 (XDR)
 
 This lab aims to explore the detection and visualization capabilities of Elastic Stack 8 (XDR) by conducting malicious tests on a Windows 10 machine. Using VirtualBox, a DHCP Server was set up to provide IP addresses for an internal network with two virtual machines: an Ubuntu Server (Elastic Host) and a Windows 10 (Victim). Both virtual machines have dual network adapters, one linked to a NAT with internet access and the other to the internal network. Elastic Stack 8 was installed on the Ubuntu Server VM to detect malicious activity on the Windows 10 VM. Data was gathered from the victim's machine using the Elastic Agent.
 
