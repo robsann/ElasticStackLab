@@ -96,7 +96,7 @@ The Fleet Server is what connects Elastic Agents to Fleet. Here are some key cha
 
 <details>
 <summary>
-<h3>1.4 - Windows Endpoint Policy</h3>
+<h3>1.3 - Windows Endpoint Policy</h3>
 </summary>
 <span style="color:gray">
 
@@ -107,7 +107,7 @@ The Windows Endpoint Policy comprises the Elastic Defend, System, and Windows in
 
 <img src="images/1/4-windows_endpoint_policy.png" title="Windows Endpoint Policy"/>
 
-### 1.4.1 - System Integration
+### 1.3.1 - System Integration
 
 The System integration allows for monitoring servers, personal computers, and other devices. This integration collects metrics (state) and logs (events) from the devices. The data collected can be visualized in Kibana. Alerts can be created to notify if something goes wrong, and data can be referenced when troubleshooting an issue.
 
@@ -122,7 +122,7 @@ In this configuration, only logs were collected.
 
 <img src="images/1/4.1-system_integration.png" title="System Integration"/>
 
-### 1.4.2 - Winows Integration
+### 1.3.2 - Winows Integration
 
 The Windows integration allows monitoring of the Windows OS, services, applications, and more. The Windows integration collects metrics (state) and logs (events) from the machine. These data can be visualized in Kibana, alerts to notify if something goes wrong can be created, and data can be referenced when troubleshooting an issue.
 
@@ -138,7 +138,7 @@ In this configuration, only logs were collected.
 
 <img src="images/1/4.2-windows_integration.png" title="Windows Integration"/>
 
-### 1.4.3 - Elastic Defend Integration
+### 1.3.3 - Elastic Defend Integration
 
 The Elastic Defend integration provides prevention, detection, and response capabilities across Windows, macOS, and Linux operating systems running on traditional endpoints and public cloud environments. In this setup, Elastic Defend Malware protection was used for threat detection.
 
@@ -156,18 +156,18 @@ Malware protection was activated in Detect mode, and Elastic Security Antivirus 
 
 <details>
 <summary>
-<h3>1.5 - Windows Security</h3>
+<h3>1.4 - Windows Security</h3>
 </summary>
 <span style="color:gray">
 
 The tests were performed with the Elastic Security Antivirus active and the SmartScreen for Microsoft Edge turned off.
 
-### 1.5.1 - Elastic Security Antivirus
+### 1.4.1 - Elastic Security Antivirus
 The Elastic Security Antivirus, integrated with Elastic Defender, was employed instead of Microsoft Defender Antivirus. Alternatively, Microsoft Defender Antivirus can be used for testing, with Real-time protection disabled, to be able to save on disk the malicious files.
 
 <img src="images/1/5.1-elastic_security_antivirus.png" title="Elastic Security Antivirus"/>
 
-### 1.5.2 - Microsoft Defender SmartScreen
+### 1.4.2 - Microsoft Defender SmartScreen
 The SmartScreen for Microsoft Edge was turned off, enabling to download the malicious files in the EICAR Malware Test.
 
 <img src="images/1/5.2-msdefender_smartscreen.png" title="Microsoft Defender SmartScreen"/>
@@ -189,16 +189,16 @@ The EICAR test file is one of the most well-known security strings that can be u
 
 <details>
 <summary>
-<h3>1. Test Preparation</h3>
+<h3>2.1 Test Preparation</h3>
 </summary>
 <span style="color:gray">
 
-### 1.1 - EIRCAR Website
+### 2.1.1 - EIRCAR Website
 In the [EICAR website](https://www.eicar.org/download-anti-malware-testfile/), under the Download area using the secure SSL-enabled protocol HTTPS, the four versions of the `eicar.com` file can be downloaded: the original file, the `eicar.com.txt` variant, and two compressed files, one with `eicar.com` compressed one time (`eicar_com.zip`) and the other compressed two times (`eicarcom2.zip`).
 
 <img src="images/2/1.1-eicar_website.png" title="EICAR Website"/>
 
-### 1.2 - EICAR Files
+### 2.1.2 - EICAR Files
 The image below displays the Download folder on the Windows 10 VM with the downloaded and extracted EICAR files.
 
 <img src="images/2/1.2-eicar_files.png" title="EICAR Downloaded Files"/>
@@ -207,26 +207,26 @@ The image below displays the Download folder on the Windows 10 VM with the downl
 
 <details>
 <summary>
-<h3>2. Test Detection</h3>
+<h3>2.2 Test Detection</h3>
 </summary>
 <span style="color:gray">
 
-### 2.1 - Endpoint Security Rule
+### 2.2.1 - Endpoint Security Rule
 The Endpoint Security Rule generates a detection alert (signal event) each time an Elastic Endpoint Security alert event is received. Enabling this rule allows the investigation of Endpoint alerts on Elastic Security. This rule was the only rule enabled to perform the EICAR Malware Test.
 
 <img src="images/2/2.1-endpoint_security_rule.png" title="Endpoint Security Rule"/>
 
-### 2.2 - Elastic Analytics Discover
+### 2. 2.2 - Elastic Analytics Discover
 In the existing setup, downloading the EICAR Malware Test's four files results in 16 events. Elastic Endpoint Security sends 8 alerts used by the Endpoint Security Rule to generate 8 signals. When the eicar.com file is downloaded, Elastic Endpoint Security triggers three alerts: one for creating a `*.tmp` file and two for renaming the `eicar.com.crdownload` and `eicar.com` files. The same pattern occurs with the `eicar.com.txt` file. During the extraction of the compressed files, each `eicar.com` file triggers one alert. The test using the filter message "Malware Detection Alert" identified 14 events: 7 alerts and 7 signals. Notably, the renaming of the `*.tmp` to `eicar.com.txt.crdownload` file was not detected in the trial.
 
 <img src="images/2/2.2-elastic_analytics_discover.png" title="Analytics Discover"/>
 
-### 2.3 - Elastic Security Dashboard Overview
+### 2.2.3 - Elastic Security Dashboard Overview
 On the `Security > Dashboards > Overview` page, apply the filter `message: "Malware Detection Alert"`. In the Events section, observe the 7 alert events received from Elastic Endpoint Security. At the top of the Alert Trend section, view the 7 signal events generated by the Endpoint Security Rule. In the Host Events section at the bottom, confirm that the 7 events sent by Endpoint Security belong to the File category.
 
 <img src="images/2/2.3-elastic_security_dashboard.png" title="Security Dashboard Overview"/>
 
-### 2.4 - Elastic Security Alerts
+### 2.2.4 - Elastic Security Alerts
 In the `Security > Alerts` section, there are 7 alerts (signal events) displayed. These alerts were triggered by the Malware Detection Alert rule. Among these, there are four creation events for individual files and three rename events for `eicar.com.crdownload`, `eicar.com`, and `eicar.com.txt`.
 
 <img src="images/2/2.4-elastic_security_alerts.png" title="Security Alerts"/>
@@ -244,13 +244,13 @@ Whenever possible, RTA tries to execute the described malicious activities. In s
 
 <details>
 <summary>
-<h3>Test Execution</h3>
+<h3>3.1 Test Execution</h3>
 </summary>
 <span style="color:gray">
 
 To conduct the MITRE ATT&CK Test using RTA, all rules in `Security > Manage > Rules` on Kibana were activated, excluding the My First Rule, Multiple Alerts Involving a User rule, and Multiple Alerts in Different ATT&CK Tactics on a Single Host rule. Moreover, any rules marked as `Failed` or `Warning` in the `Last Response` field were deactivated.
 
-### 1 - Alerts Over Time
+### 3.1.1 - Alerts Over Time
 After running the `run_all.py` python scrip on `RTA-master` directory, the test completed in under 15 minutes and produced 247 signal events detected by 45 rules, identifying the actions of 25 Python scripts utilizing 49 distinct executables. The chart displayed below illustrates the progression of these signal events throughout the test period.
 
 <img src="images/3/1-alerts_over_time.png" title="Alerts Over Time"/>
@@ -259,31 +259,31 @@ After running the `run_all.py` python scrip on `RTA-master` directory, the test 
 
 <details>
 <summary>
-<h3>Test Detection</h3>
+<h3>3.2 Test Detection</h3>
 </summary>
 <span style="color:gray">
 
-### 2.1 - Detection Rules and Executables
+### 3.2.1 - Detection Rules and Executables
 The chart on the left displays the 45 Security SIEM detection rules utilized to generate alerts (signal events). These rules are sorted and color-coded based on their severity classification. On the right, the chart exhibits the 49 detected executables, sorted by the number of records. The executables are also color-coded in accordance with the event's severity classification.
 
 <img src="images/3/2.1-rules_and_executables.png" title="Rules and Executables"/>
 
-### 2.2 - Python Scripts used by RTA
+### 3.2.2 - Python Scripts used by RTA
 The chart displays 25 Python scripts identified in the test. These scripts are arranged by record count and color-coded according to event severity classification.
 
 <img src="images/3/2.2-python_scripts.png" title="Python Scripts"/>
 
-### 2.3 - Processes per Rule for the Top 10 Rules by Count of Records
+### 3.2.3 - Processes per Rule for the Top 10 Rules by Count of Records
 This chart illustrates the top 10 rules by the record count. The parent process is shown on the left axis, and the child processes are depicted in the legend.
 
 <img src="images/3/2.3-processes_per_rule_top10.png" title="Processes per Rule (Top 10)"/>
 
-### 3.1 - Detection Rules, Techniques, and Tactics
+### 3.2.4 - Detection Rules, Techniques, and Tactics
 Table listing 45 detection rules, including their ID and name for the associated technique and tactic, along with the number of unique executables detected by each rule and the count of signal events generated by the rule.
 
 <img src="images/3/3.1-rules_tech_tact.png" title="Rules Techiniques Tactics"/>
 
-### 3.2 - Detection Signals in Time Order
+### 3.2.5 - Detection Signals in Time Order
 The table below presents the commands executed in the process, along with the parent process, for each activated rule in the test. It also displays the username associated with each command, as well as the event action and severity.
 
 <img src="images/3/3.2-processes_per_rule.png" title="Processes per Rule"/>
